@@ -16,7 +16,10 @@
 		6069CE0E254F484900722E72 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6069CE0D254F484900722E72 /* Friends.storyboard */; };
 		6069CE14254F4A5300722E72 /* AllGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE13254F4A5300722E72 /* AllGroupsController.swift */; };
 		6069CE18254F4A6600722E72 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE17254F4A6600722E72 /* MyGroupsController.swift */; };
-		6069CE1B254F4A9100722E72 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE1A254F4A9100722E72 /* GroupCell.swift */; };
+		6069CE1B254F4A9100722E72 /* AllGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE1A254F4A9100722E72 /* AllGroupCell.swift */; };
+		6069CE20254F4D2400722E72 /* MyGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE1F254F4D2400722E72 /* MyGroupCell.swift */; };
+		6069CE24254F589A00722E72 /* MyFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE23254F589A00722E72 /* MyFriendsController.swift */; };
+		6069CE28254F58A900722E72 /* MyFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE27254F58A900722E72 /* MyFriendsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +34,10 @@
 		6069CE0D254F484900722E72 /* Friends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
 		6069CE13254F4A5300722E72 /* AllGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsController.swift; sourceTree = "<group>"; };
 		6069CE17254F4A6600722E72 /* MyGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
-		6069CE1A254F4A9100722E72 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		6069CE1A254F4A9100722E72 /* AllGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupCell.swift; sourceTree = "<group>"; };
+		6069CE1F254F4D2400722E72 /* MyGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupCell.swift; sourceTree = "<group>"; };
+		6069CE23254F589A00722E72 /* MyFriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsController.swift; sourceTree = "<group>"; };
+		6069CE27254F58A900722E72 /* MyFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 		6069CE11254F4A0F00722E72 /* TabItems */ = {
 			isa = PBXGroup;
 			children = (
+				6069CE22254F587C00722E72 /* Friends */,
 				6069CE12254F4A2200722E72 /* Groups */,
 			);
 			path = TabItems;
@@ -97,10 +104,20 @@
 			isa = PBXGroup;
 			children = (
 				6069CE13254F4A5300722E72 /* AllGroupsController.swift */,
+				6069CE1A254F4A9100722E72 /* AllGroupCell.swift */,
 				6069CE17254F4A6600722E72 /* MyGroupsController.swift */,
-				6069CE1A254F4A9100722E72 /* GroupCell.swift */,
+				6069CE1F254F4D2400722E72 /* MyGroupCell.swift */,
 			);
 			path = Groups;
+			sourceTree = "<group>";
+		};
+		6069CE22254F587C00722E72 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				6069CE23254F589A00722E72 /* MyFriendsController.swift */,
+				6069CE27254F58A900722E72 /* MyFriendsCell.swift */,
+			);
+			path = Friends;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,11 +192,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6069CE1B254F4A9100722E72 /* GroupCell.swift in Sources */,
+				6069CE1B254F4A9100722E72 /* AllGroupCell.swift in Sources */,
 				6069CE14254F4A5300722E72 /* AllGroupsController.swift in Sources */,
 				6069CE18254F4A6600722E72 /* MyGroupsController.swift in Sources */,
+				6069CE20254F4D2400722E72 /* MyGroupCell.swift in Sources */,
+				6069CE24254F589A00722E72 /* MyFriendsController.swift in Sources */,
 				6069CDF0254F00A600722E72 /* LoginViewController.swift in Sources */,
 				6069CDEC254F00A600722E72 /* AppDelegate.swift in Sources */,
+				6069CE28254F58A900722E72 /* MyFriendsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

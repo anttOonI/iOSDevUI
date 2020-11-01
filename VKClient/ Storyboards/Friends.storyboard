@@ -9,23 +9,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Мои друзья-->
         <scene sceneID="4dp-Ct-ANb">
             <objects>
-                <tableViewController modalPresentationStyle="fullScreen" id="FMd-qj-Euz" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="FMd-qj-Euz" customClass="MyFriendsController" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mcx-zZ-Kvf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ETT-gi-yiq">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myFriendCell" id="ETT-gi-yiq" customClass="MyFriendsCell" customModule="VKClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ETT-gi-yiq" id="j4c-a1-cIW">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QE7-NO-k6l">
+                                            <rect key="frame" x="20" y="11.5" width="42" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="QE7-NO-k6l" firstAttribute="centerY" secondItem="j4c-a1-cIW" secondAttribute="centerY" id="b2n-2u-LUE"/>
+                                        <constraint firstItem="QE7-NO-k6l" firstAttribute="leading" secondItem="j4c-a1-cIW" secondAttribute="leading" constant="20" symbolic="YES" id="ulE-5w-YnJ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="myFriendName" destination="QE7-NO-k6l" id="PzK-cR-YGO"/>
                                     <segue destination="Wbl-t4-2k1" kind="show" id="cL8-yC-6u5"/>
                                 </connections>
                             </tableViewCell>
@@ -35,13 +48,13 @@
                             <outlet property="delegate" destination="FMd-qj-Euz" id="UuJ-Io-ARz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Pkj-he-Vfg"/>
+                    <navigationItem key="navigationItem" title="Мои друзья" id="Pkj-he-Vfg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daL-SG-Owf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4249.275362318841" y="650.89285714285711"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Фото-->
         <scene sceneID="6pY-68-jym">
             <objects>
                 <collectionViewController modalPresentationStyle="fullScreen" id="Wbl-t4-2k1" sceneMemberID="viewController">
@@ -70,18 +83,19 @@
                             <outlet property="delegate" destination="Wbl-t4-2k1" id="4Pb-4o-khq"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Peb-Ep-y06"/>
+                    <navigationItem key="navigationItem" title="Фото" id="Peb-Ep-y06"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5y-ZO-Vpq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5157.971014492754" y="650.89285714285711"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Мои друзья-->
         <scene sceneID="Frk-VP-5QM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="GIt-3Z-6XK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="fYN-pb-mND"/>
+                    <tabBarItem key="tabBarItem" title="Мои друзья" image="person.2.fill" catalog="system" id="TbU-zh-mV0"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sCk-uE-IAw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -97,6 +111,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

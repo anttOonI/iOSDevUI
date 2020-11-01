@@ -8,6 +8,14 @@
 import UIKit
 
 class AllGroupsController: UITableViewController {
+    
+    var allGroups = [
+        "Group1",
+        "Group2",
+        "Group3",
+        "Group4",
+        "Group5"
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,23 +31,24 @@ class AllGroupsController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return allGroups.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupCell", for: indexPath) as! AllGroupCell
+        let group = allGroups[indexPath.row]
+        cell.textLabel?.text = group
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
