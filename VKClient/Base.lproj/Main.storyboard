@@ -44,6 +44,9 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Sign In"/>
+                                        <connections>
+                                            <segue destination="ijb-xf-1r5" kind="show" id="fmu-k8-7SC"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jp0-Lc-cjI">
                                         <rect key="frame" x="149.5" y="548" width="115" height="30"/>
@@ -85,7 +88,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="93.75"/>
+            <point key="canvasLocation" x="1519" y="292"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Db5-pX-aiG">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ijb-xf-1r5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="WqE-gI-cun"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hdO-bb-C9b">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="R38-Uo-yeR" kind="relationship" relationship="viewControllers" id="eoI-Fo-eGe"/>
+                        <segue destination="a5p-Rk-LdJ" kind="relationship" relationship="viewControllers" id="1TY-jZ-y5O"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VTG-bE-noq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2436" y="292"/>
+        </scene>
+        <!--Friends-->
+        <scene sceneID="XGE-aX-U7b">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Friends" id="R38-Uo-yeR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="idn-pa-GON"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DQ5-zw-Lhv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2253" y="931"/>
+        </scene>
+        <!--Groups-->
+        <scene sceneID="VTw-8w-v92">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Groups" id="a5p-Rk-LdJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Q7R-0D-Ycu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JM4-Wd-Qla" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2681" y="931"/>
         </scene>
     </scenes>
     <resources>

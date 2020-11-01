@@ -12,6 +12,11 @@
 		6069CDF3254F00A600722E72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6069CDF1254F00A600722E72 /* Main.storyboard */; };
 		6069CDF5254F00A700722E72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6069CDF4254F00A700722E72 /* Assets.xcassets */; };
 		6069CDF8254F00A700722E72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6069CDF6254F00A700722E72 /* LaunchScreen.storyboard */; };
+		6069CE0B254F483E00722E72 /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6069CE0A254F483E00722E72 /* Groups.storyboard */; };
+		6069CE0E254F484900722E72 /* Friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6069CE0D254F484900722E72 /* Friends.storyboard */; };
+		6069CE14254F4A5300722E72 /* AllGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE13254F4A5300722E72 /* AllGroupsController.swift */; };
+		6069CE18254F4A6600722E72 /* MyGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE17254F4A6600722E72 /* MyGroupsController.swift */; };
+		6069CE1B254F4A9100722E72 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE1A254F4A9100722E72 /* GroupCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		6069CDF4254F00A700722E72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6069CDF7254F00A700722E72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6069CDF9254F00A700722E72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6069CE0A254F483E00722E72 /* Groups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
+		6069CE0D254F484900722E72 /* Friends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Friends.storyboard; sourceTree = "<group>"; };
+		6069CE13254F4A5300722E72 /* AllGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsController.swift; sourceTree = "<group>"; };
+		6069CE17254F4A6600722E72 /* MyGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsController.swift; sourceTree = "<group>"; };
+		6069CE1A254F4A9100722E72 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,8 @@
 		6069CDEA254F00A600722E72 /* VKClient */ = {
 			isa = PBXGroup;
 			children = (
+				6069CE11254F4A0F00722E72 /* TabItems */,
+				6069CE09254F482200722E72 /*  Storyboards */,
 				6069CDEB254F00A600722E72 /* AppDelegate.swift */,
 				6069CDEF254F00A600722E72 /* LoginViewController.swift */,
 				6069CDF1254F00A600722E72 /* Main.storyboard */,
@@ -62,6 +74,33 @@
 				6069CDF9254F00A700722E72 /* Info.plist */,
 			);
 			path = VKClient;
+			sourceTree = "<group>";
+		};
+		6069CE09254F482200722E72 /*  Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6069CE0D254F484900722E72 /* Friends.storyboard */,
+				6069CE0A254F483E00722E72 /* Groups.storyboard */,
+			);
+			path = " Storyboards";
+			sourceTree = "<group>";
+		};
+		6069CE11254F4A0F00722E72 /* TabItems */ = {
+			isa = PBXGroup;
+			children = (
+				6069CE12254F4A2200722E72 /* Groups */,
+			);
+			path = TabItems;
+			sourceTree = "<group>";
+		};
+		6069CE12254F4A2200722E72 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				6069CE13254F4A5300722E72 /* AllGroupsController.swift */,
+				6069CE17254F4A6600722E72 /* MyGroupsController.swift */,
+				6069CE1A254F4A9100722E72 /* GroupCell.swift */,
+			);
+			path = Groups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,6 +160,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6069CE0B254F483E00722E72 /* Groups.storyboard in Resources */,
+				6069CE0E254F484900722E72 /* Friends.storyboard in Resources */,
 				6069CDF8254F00A700722E72 /* LaunchScreen.storyboard in Resources */,
 				6069CDF5254F00A700722E72 /* Assets.xcassets in Resources */,
 				6069CDF3254F00A600722E72 /* Main.storyboard in Resources */,
@@ -134,6 +175,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6069CE1B254F4A9100722E72 /* GroupCell.swift in Sources */,
+				6069CE14254F4A5300722E72 /* AllGroupsController.swift in Sources */,
+				6069CE18254F4A6600722E72 /* MyGroupsController.swift in Sources */,
 				6069CDF0254F00A600722E72 /* LoginViewController.swift in Sources */,
 				6069CDEC254F00A600722E72 /* AppDelegate.swift in Sources */,
 			);
