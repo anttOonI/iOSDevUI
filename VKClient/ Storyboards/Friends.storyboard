@@ -48,9 +48,21 @@
                             <outlet property="delegate" destination="FMd-qj-Euz" id="UuJ-Io-ARz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Мои друзья" id="Pkj-he-Vfg"/>
+                    <navigationItem key="navigationItem" title="Мои друзья" id="Pkj-he-Vfg">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="TWg-Fv-pxw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="C5f-LG-R7z">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Выйти"/>
+                            </button>
+                            <connections>
+                                <segue destination="K1d-be-DHK" kind="unwind" identifier="" unwindAction="unwindToLogin:" id="sTw-HH-S9Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daL-SG-Owf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="K1d-be-DHK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4249.275362318841" y="650.89285714285711"/>
         </scene>
@@ -63,18 +75,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CgC-FH-oNf">
-                            <size key="itemSize" width="128" height="128"/>
+                            <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hKs-A1-4PV">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CRO-hN-IGK">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waU-hK-Pdu">
+                                            <rect key="frame" x="54" y="8" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BID-P1-zPv">
+                                            <rect key="frame" x="54" y="121" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hun-eA-cXy">
+                                            <rect key="frame" x="35" y="35" width="80" height="80"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="waU-hK-Pdu" firstAttribute="top" secondItem="CRO-hN-IGK" secondAttribute="top" constant="8" id="5Ca-4A-6Hb"/>
+                                        <constraint firstItem="hun-eA-cXy" firstAttribute="centerY" secondItem="CRO-hN-IGK" secondAttribute="centerY" id="F6s-xb-WA8"/>
+                                        <constraint firstAttribute="bottom" secondItem="BID-P1-zPv" secondAttribute="bottom" constant="8" id="ZE2-KJ-thg"/>
+                                        <constraint firstAttribute="trailing" secondItem="hun-eA-cXy" secondAttribute="trailing" constant="35" id="kP1-s6-rPQ"/>
+                                        <constraint firstItem="waU-hK-Pdu" firstAttribute="centerX" secondItem="CRO-hN-IGK" secondAttribute="centerX" id="qDx-qM-fSO"/>
+                                        <constraint firstItem="hun-eA-cXy" firstAttribute="top" secondItem="waU-hK-Pdu" secondAttribute="bottom" constant="6" id="ucd-RB-bvz"/>
+                                        <constraint firstItem="BID-P1-zPv" firstAttribute="centerX" secondItem="CRO-hN-IGK" secondAttribute="centerX" id="w34-g9-zdU"/>
+                                        <constraint firstItem="hun-eA-cXy" firstAttribute="centerX" secondItem="CRO-hN-IGK" secondAttribute="centerX" id="yth-dV-3Zy"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
                             </collectionViewCell>
                         </cells>
