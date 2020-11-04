@@ -82,10 +82,7 @@
 				6069CE09254F482200722E72 /* View */,
 				6069CE11254F4A0F00722E72 /* Controllers */,
 				6069CDEB254F00A600722E72 /* AppDelegate.swift */,
-				6069CDEF254F00A600722E72 /* LoginViewController.swift */,
-				6069CDF1254F00A600722E72 /* Main.storyboard */,
 				6069CDF4254F00A700722E72 /* Assets.xcassets */,
-				6069CDF6254F00A700722E72 /* LaunchScreen.storyboard */,
 				6069CDF9254F00A700722E72 /* Info.plist */,
 			);
 			path = VKClient;
@@ -94,6 +91,8 @@
 		6069CE09254F482200722E72 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6069CDF6254F00A700722E72 /* LaunchScreen.storyboard */,
+				6069CDF1254F00A600722E72 /* Main.storyboard */,
 				6069CE0D254F484900722E72 /* Friends.storyboard */,
 				6069CE0A254F483E00722E72 /* Groups.storyboard */,
 			);
@@ -103,6 +102,7 @@
 		6069CE11254F4A0F00722E72 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6069CDEF254F00A600722E72 /* LoginViewController.swift */,
 				6069CE22254F587C00722E72 /* Friends */,
 				6069CE12254F4A2200722E72 /* Groups */,
 			);

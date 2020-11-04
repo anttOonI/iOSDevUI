@@ -45,12 +45,15 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Sign In"/>
                                         <connections>
-                                            <segue destination="ijb-xf-1r5" kind="show" id="fmu-k8-7SC"/>
+                                            <segue destination="ijb-xf-1r5" kind="show" identifier="Login" id="fmu-k8-7SC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jp0-Lc-cjI">
                                         <rect key="frame" x="149.5" y="548" width="115" height="30"/>
                                         <state key="normal" title="Forgot password"/>
+                                        <connections>
+                                            <segue destination="Q1o-yZ-1VA" kind="show" identifier="ForgotPass" id="EoS-6H-8Sd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -129,6 +132,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JM4-Wd-Qla" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2681" y="931"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Zyx-vE-igM">
+            <objects>
+                <viewController id="Q1o-yZ-1VA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vHp-5r-SWM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вспоминай:)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0c-Ru-7Jv">
+                                <rect key="frame" x="144" y="391" width="126.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DHd-nQ-3kh"/>
+                        <color key="backgroundColor" red="0.4448895323" green="0.62633013289999995" blue="0.81981530560000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="d0c-Ru-7Jv" firstAttribute="centerX" secondItem="DHd-nQ-3kh" secondAttribute="centerX" id="BN3-dF-Q3g"/>
+                            <constraint firstItem="d0c-Ru-7Jv" firstAttribute="centerY" secondItem="DHd-nQ-3kh" secondAttribute="centerY" id="HAK-W1-9oX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="kTL-wZ-MPz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgj-mx-bL4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1519" y="1049"/>
         </scene>
     </scenes>
     <resources>

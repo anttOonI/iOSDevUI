@@ -18,15 +18,9 @@ class LoginViewController: UIViewController {
     
     // MARK: - Public Methods
     
-    @IBAction func doLogin(_ sender: Any) {
-        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //        let appViewController = storyboard.instantiateViewController(withIdentifier: "AppViewController")
-        //        self.navigationController?.pushViewController(appViewController, animated: true)
-        
-    }
-    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         // Проверяем данные
+        guard identifier == "Login" else { return true }
         let checkResult = checkUserData()
         
         // Если данные не верны, покажем ошибку
@@ -116,7 +110,8 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @IBAction func unwindToLogin(_ sender: UIStoryboardSegue) {
+    @IBAction func unwindToLoginScreen(_ sender: UIStoryboardSegue) {
+        
     }
 
 }
