@@ -1,5 +1,5 @@
 //
-//  MyFriendsCell.swift
+//  GroupCell.swift
 //  VKClient
 //
 //  Created by AntonSobolev on 01.11.2020.
@@ -7,9 +7,10 @@
 
 import UIKit
 
-class MyFriendsCell: UITableViewCell {
+class AllGroupTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var myFriendName: UILabel!
+    @IBOutlet weak var groupName: UILabel!
+    @IBOutlet weak var groupAvatar: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

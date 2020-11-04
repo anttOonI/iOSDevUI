@@ -1,5 +1,5 @@
 //
-//  AllGroupsController.swift
+//  MyFriendsController.swift
 //  VKClient
 //
 //  Created by AntonSobolev on 01.11.2020.
@@ -7,14 +7,13 @@
 
 import UIKit
 
-class AllGroupsController: UITableViewController {
+class MyFriendsTableViewController: UITableViewController {
     
-    var allGroups = [
-        "Group1",
-        "Group2",
-        "Group3",
-        "Group4",
-        "Group5"
+    var myFriends: [Friend] = [
+        Friend(name: "Chendler Bing", avatar: "Chendler", imageCollection: ["Chendler", "Chendler1", "Chendler2"]),
+        Friend(name: "Monica Geller", avatar: "Monica", imageCollection: ["Monica", "Monica1", "Monica2"]),
+        Friend(name: "Joey Tribbiani", avatar: "Joey", imageCollection: ["Joey", "Joey1", "Joey2"]),
+        Friend(name: "Rachell Green", avatar: "Rachell", imageCollection: ["Rachell", "Rachell1", "Rachell2"])
     ]
 
     override func viewDidLoad() {
@@ -36,19 +35,30 @@ class AllGroupsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return allGroups.count
+        return myFriends.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupCell", for: indexPath) as! AllGroupCell
-        let group = allGroups[indexPath.row]
-        cell.textLabel?.text = group
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myFriendCell", for: indexPath) as! MyFriendsTableViewCell
+        let image = myFriends[indexPath.row].avatar
+        let name = myFriends[indexPath.row].name
+        
+        cell.myFriendName.text = name
+        cell.myFriendAvatar.image = UIImage(named: image)
 
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showCollection" else { return }
+        guard let destination = segue.destination as? FriendsPhotosCollectionViewController else { return }
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destination.photos = myFriends[indexPath.row].imageCollection
+        }
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

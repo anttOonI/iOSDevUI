@@ -12,34 +12,44 @@
         <!--Мои друзья-->
         <scene sceneID="4dp-Ct-ANb">
             <objects>
-                <tableViewController modalPresentationStyle="fullScreen" id="FMd-qj-Euz" customClass="MyFriendsController" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="FMd-qj-Euz" customClass="MyFriendsTableViewController" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mcx-zZ-Kvf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myFriendCell" id="ETT-gi-yiq" customClass="MyFriendsCell" customModule="VKClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myFriendCell" rowHeight="120" id="ETT-gi-yiq" customClass="MyFriendsTableViewCell" customModule="VKClient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ETT-gi-yiq" id="j4c-a1-cIW">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QE7-NO-k6l">
-                                            <rect key="frame" x="20" y="11.5" width="42" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qeF-za-Knv">
+                                            <rect key="frame" x="20" y="20" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="1l2-Hk-2Jd"/>
+                                                <constraint firstAttribute="height" constant="80" id="vUF-pp-JCH"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ5-2c-hcH">
+                                            <rect key="frame" x="125" y="48" width="48" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="QE7-NO-k6l" firstAttribute="centerY" secondItem="j4c-a1-cIW" secondAttribute="centerY" id="b2n-2u-LUE"/>
-                                        <constraint firstItem="QE7-NO-k6l" firstAttribute="leading" secondItem="j4c-a1-cIW" secondAttribute="leading" constant="20" symbolic="YES" id="ulE-5w-YnJ"/>
+                                        <constraint firstItem="hZ5-2c-hcH" firstAttribute="centerY" secondItem="j4c-a1-cIW" secondAttribute="centerY" id="CXn-YC-eFA"/>
+                                        <constraint firstItem="qeF-za-Knv" firstAttribute="leading" secondItem="j4c-a1-cIW" secondAttribute="leading" constant="20" symbolic="YES" id="GGe-8U-uRr"/>
+                                        <constraint firstItem="hZ5-2c-hcH" firstAttribute="leading" secondItem="qeF-za-Knv" secondAttribute="trailing" constant="25" id="aum-yc-kMO"/>
+                                        <constraint firstItem="qeF-za-Knv" firstAttribute="centerY" secondItem="j4c-a1-cIW" secondAttribute="centerY" id="fqh-tP-Efa"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="myFriendName" destination="QE7-NO-k6l" id="PzK-cR-YGO"/>
-                                    <segue destination="Wbl-t4-2k1" kind="show" id="cL8-yC-6u5"/>
+                                    <outlet property="myFriendAvatar" destination="qeF-za-Knv" id="zvc-F7-jyP"/>
+                                    <outlet property="myFriendName" destination="hZ5-2c-hcH" id="dBh-pR-d5U"/>
+                                    <segue destination="Wbl-t4-2k1" kind="show" identifier="showCollection" id="cL8-yC-6u5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -69,52 +79,40 @@
         <!--Фото-->
         <scene sceneID="6pY-68-jym">
             <objects>
-                <collectionViewController modalPresentationStyle="fullScreen" id="Wbl-t4-2k1" sceneMemberID="viewController">
+                <collectionViewController modalPresentationStyle="fullScreen" id="Wbl-t4-2k1" customClass="FriendsPhotosCollectionViewController" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Uvx-ky-qgp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CgC-FH-oNf">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CgC-FH-oNf">
                             <size key="itemSize" width="150" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hKs-A1-4PV">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendPhotosCell" id="hKs-A1-4PV" customClass="FriendsPhotosCollectionViewCell" customModule="VKClient" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CRO-hN-IGK">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waU-hK-Pdu">
-                                            <rect key="frame" x="54" y="8" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BID-P1-zPv">
-                                            <rect key="frame" x="54" y="121" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hun-eA-cXy">
-                                            <rect key="frame" x="35" y="35" width="80" height="80"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBg-tG-RI3">
+                                            <rect key="frame" x="8" y="0.0" width="142" height="150"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="waU-hK-Pdu" firstAttribute="top" secondItem="CRO-hN-IGK" secondAttribute="top" constant="8" id="5Ca-4A-6Hb"/>
-                                        <constraint firstItem="hun-eA-cXy" firstAttribute="centerY" secondItem="CRO-hN-IGK" secondAttribute="centerY" id="F6s-xb-WA8"/>
-                                        <constraint firstAttribute="bottom" secondItem="BID-P1-zPv" secondAttribute="bottom" constant="8" id="ZE2-KJ-thg"/>
-                                        <constraint firstAttribute="trailing" secondItem="hun-eA-cXy" secondAttribute="trailing" constant="35" id="kP1-s6-rPQ"/>
-                                        <constraint firstItem="waU-hK-Pdu" firstAttribute="centerX" secondItem="CRO-hN-IGK" secondAttribute="centerX" id="qDx-qM-fSO"/>
-                                        <constraint firstItem="hun-eA-cXy" firstAttribute="top" secondItem="waU-hK-Pdu" secondAttribute="bottom" constant="6" id="ucd-RB-bvz"/>
-                                        <constraint firstItem="BID-P1-zPv" firstAttribute="centerX" secondItem="CRO-hN-IGK" secondAttribute="centerX" id="w34-g9-zdU"/>
-                                        <constraint firstItem="hun-eA-cXy" firstAttribute="centerX" secondItem="CRO-hN-IGK" secondAttribute="centerX" id="yth-dV-3Zy"/>
+                                        <constraint firstItem="SBg-tG-RI3" firstAttribute="top" secondItem="CRO-hN-IGK" secondAttribute="top" id="5ug-gY-u0S"/>
+                                        <constraint firstAttribute="bottom" secondItem="SBg-tG-RI3" secondAttribute="bottom" id="7A8-hP-wI6"/>
+                                        <constraint firstAttribute="trailing" secondItem="SBg-tG-RI3" secondAttribute="trailing" id="SFx-cJ-Lth"/>
+                                        <constraint firstItem="SBg-tG-RI3" firstAttribute="leading" secondItem="CRO-hN-IGK" secondAttribute="leading" constant="8" id="jOR-2w-T7l"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <size key="customSize" width="150" height="150"/>
+                                <connections>
+                                    <outlet property="friendPhotos" destination="SBg-tG-RI3" id="qBv-fq-Tfv"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

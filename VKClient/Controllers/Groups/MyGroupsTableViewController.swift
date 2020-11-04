@@ -1,5 +1,5 @@
 //
-//  MyFriendsController.swift
+//  MyGroupsController.swift
 //  VKClient
 //
 //  Created by AntonSobolev on 01.11.2020.
@@ -7,16 +7,10 @@
 
 import UIKit
 
-class MyFriendsController: UITableViewController {
-    
-    var myFriends = [
-        "Друг1",
-        "Друг2",
-        "Друг3",
-        "Друг4",
-        "Друг5"
-    ]
+class MyGroupsTableViewController: UITableViewController {
 
+    var myGroups: [Group] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +19,22 @@ class MyFriendsController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    // MARK: - Public Methods
+    
+    @IBAction func addGroup(segue: UIStoryboardSegue) {
+        
+        if segue.identifier == "addGroup" {
+            guard let allGroupsController = segue.source as? AllGroupsTableViewController else { return }
+            if let indexPath = allGroupsController.tableView.indexPathForSelectedRow {
+                let selectedGroup = allGroupsController.allGroups[indexPath.row]
+                if !myGroups.contains(selectedGroup) {
+                    myGroups.append(selectedGroup)
+                    tableView.reloadData()
+                }
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -36,17 +46,17 @@ class MyFriendsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myFriends.count
+        return myGroups.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myFriendCell", for: indexPath) as! MyFriendsCell
-        let friend = myFriends[indexPath.row]
-        
-        cell.myFriendName.text = friend
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myGroupCell", for: indexPath) as! MyGroupTableViewCell
+        let groupImage = myGroups[indexPath.row].image
+        let groupName = myGroups[indexPath.row].groupName
+        cell.myGroupImage.image = UIImage(named: groupImage)
+        cell.myGroupName.text = groupName
         return cell
     }
     
@@ -59,17 +69,15 @@ class MyFriendsController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            myGroups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
