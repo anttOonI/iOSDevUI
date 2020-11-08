@@ -19,6 +19,7 @@ class MyFriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -46,7 +47,17 @@ class MyFriendsTableViewController: UITableViewController {
         let name = myFriends[indexPath.row].name
         
         cell.myFriendName.text = name
+        // Присваивание свойству image у UIImageView картинку для аватарки и делаем ее круглой
         cell.myFriendAvatar.image = UIImage(named: image)
+        cell.myFriendAvatar.layer.cornerRadius = cell.myFriendAvatar.frame.size.height / 2
+        
+        // Настройка UIView, который под картинкой,чтобы давал тень и был круглый
+        cell.avatarView.layer.cornerRadius = cell.myFriendAvatar.frame.size.height / 2
+        cell.avatarView.layer.shadowPath = UIBezierPath(roundedRect: cell.avatarView.bounds, cornerRadius: (cell.myFriendAvatar.frame.size.height / 2)).cgPath
+        cell.avatarView.layer.shadowColor = UIColor.green.cgColor
+        cell.avatarView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.avatarView.layer.shadowOpacity = 0.7
+        cell.avatarView.layer.shadowRadius = 3.0
 
         return cell
     }

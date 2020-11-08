@@ -20,6 +20,7 @@
 		6069CE20254F4D2400722E72 /* MyGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE1F254F4D2400722E72 /* MyGroupTableViewCell.swift */; };
 		6069CE24254F589A00722E72 /* MyFriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE23254F589A00722E72 /* MyFriendsTableViewController.swift */; };
 		6069CE28254F58A900722E72 /* MyFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CE27254F58A900722E72 /* MyFriendsTableViewCell.swift */; };
+		6074B97325588F8B0082009A /* LikePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6074B97225588F8B0082009A /* LikePickerButton.swift */; };
 		60A6A21D2552D88300372BE2 /* FriendsPhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6A21C2552D88300372BE2 /* FriendsPhotosCollectionViewController.swift */; };
 		60A6A2202552D89E00372BE2 /* FriendsPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6A21F2552D89E00372BE2 /* FriendsPhotosCollectionViewCell.swift */; };
 		60B05AB52551E9EC00D7F402 /* FriendsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B05AB42551E9EC00D7F402 /* FriendsDataModel.swift */; };
@@ -42,6 +43,7 @@
 		6069CE1F254F4D2400722E72 /* MyGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupTableViewCell.swift; sourceTree = "<group>"; };
 		6069CE23254F589A00722E72 /* MyFriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsTableViewController.swift; sourceTree = "<group>"; };
 		6069CE27254F58A900722E72 /* MyFriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsTableViewCell.swift; sourceTree = "<group>"; };
+		6074B97225588F8B0082009A /* LikePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePickerButton.swift; sourceTree = "<group>"; };
 		60A6A21C2552D88300372BE2 /* FriendsPhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		60A6A21F2552D89E00372BE2 /* FriendsPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		60B05AB42551E9EC00D7F402 /* FriendsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsDataModel.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				6069CDEF254F00A600722E72 /* LoginViewController.swift */,
 				6069CE22254F587C00722E72 /* Friends */,
 				6069CE12254F4A2200722E72 /* Groups */,
+				6074B97225588F8B0082009A /* LikePickerButton.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				6069CE18254F4A6600722E72 /* MyGroupsTableViewController.swift in Sources */,
 				60B05AB92551E9F500D7F402 /* GroupsDataModel.swift in Sources */,
 				6069CE20254F4D2400722E72 /* MyGroupTableViewCell.swift in Sources */,
+				6074B97325588F8B0082009A /* LikePickerButton.swift in Sources */,
 				60B05AB52551E9EC00D7F402 /* FriendsDataModel.swift in Sources */,
 				6069CE24254F589A00722E72 /* MyFriendsTableViewController.swift in Sources */,
 				6069CDF0254F00A600722E72 /* LoginViewController.swift in Sources */,

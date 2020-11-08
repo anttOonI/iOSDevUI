@@ -25,13 +25,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qeF-za-Knv">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1h-e3-bBG">
                                             <rect key="frame" x="20" y="5" width="80" height="80"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nbG-Dr-cEY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="1l2-Hk-2Jd"/>
-                                                <constraint firstAttribute="height" constant="80" id="vUF-pp-JCH"/>
+                                                <constraint firstAttribute="width" constant="80" id="5mO-Ey-UiK"/>
+                                                <constraint firstItem="nbG-Dr-cEY" firstAttribute="centerY" secondItem="T1h-e3-bBG" secondAttribute="centerY" id="JHg-d1-zZv"/>
+                                                <constraint firstItem="nbG-Dr-cEY" firstAttribute="centerX" secondItem="T1h-e3-bBG" secondAttribute="centerX" id="K2s-VQ-HzF"/>
+                                                <constraint firstItem="nbG-Dr-cEY" firstAttribute="width" secondItem="T1h-e3-bBG" secondAttribute="width" multiplier="3" constant="-160" id="Vnd-W2-70r"/>
+                                                <constraint firstItem="nbG-Dr-cEY" firstAttribute="height" secondItem="T1h-e3-bBG" secondAttribute="height" multiplier="1.6" constant="-48" id="Y8d-5m-g9y"/>
+                                                <constraint firstAttribute="height" constant="80" id="lrT-vN-qlm"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ5-2c-hcH">
                                             <rect key="frame" x="125" y="33" width="48" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -40,15 +50,16 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="qeF-za-Knv" firstAttribute="top" secondItem="j4c-a1-cIW" secondAttribute="top" constant="5" id="05U-Ti-Kvi"/>
                                         <constraint firstItem="hZ5-2c-hcH" firstAttribute="centerY" secondItem="j4c-a1-cIW" secondAttribute="centerY" id="CXn-YC-eFA"/>
-                                        <constraint firstItem="qeF-za-Knv" firstAttribute="leading" secondItem="j4c-a1-cIW" secondAttribute="leading" constant="20" symbolic="YES" id="GGe-8U-uRr"/>
-                                        <constraint firstItem="qeF-za-Knv" firstAttribute="centerY" secondItem="j4c-a1-cIW" secondAttribute="centerY" id="W9C-cy-6fb"/>
-                                        <constraint firstItem="hZ5-2c-hcH" firstAttribute="leading" secondItem="qeF-za-Knv" secondAttribute="trailing" constant="25" id="aum-yc-kMO"/>
+                                        <constraint firstItem="T1h-e3-bBG" firstAttribute="top" secondItem="j4c-a1-cIW" secondAttribute="top" constant="5" id="Jj1-pQ-eUz"/>
+                                        <constraint firstItem="T1h-e3-bBG" firstAttribute="leading" secondItem="j4c-a1-cIW" secondAttribute="leading" constant="20" symbolic="YES" id="SPW-zD-h6v"/>
+                                        <constraint firstItem="hZ5-2c-hcH" firstAttribute="leading" secondItem="T1h-e3-bBG" secondAttribute="trailing" constant="25" id="f2O-Lh-VDM"/>
+                                        <constraint firstItem="T1h-e3-bBG" firstAttribute="centerY" secondItem="j4c-a1-cIW" secondAttribute="centerY" id="gh0-G8-xu1"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="myFriendAvatar" destination="qeF-za-Knv" id="zvc-F7-jyP"/>
+                                    <outlet property="avatarView" destination="T1h-e3-bBG" id="CcN-HQ-FZC"/>
+                                    <outlet property="myFriendAvatar" destination="nbG-Dr-cEY" id="mBF-W5-cFv"/>
                                     <outlet property="myFriendName" destination="hZ5-2c-hcH" id="dBh-pR-d5U"/>
                                     <segue destination="Wbl-t4-2k1" kind="show" identifier="showCollection" id="cL8-yC-6u5"/>
                                 </connections>
@@ -102,6 +113,18 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBg-tG-RI3">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVX-bc-6oh">
+                                            <rect key="frame" x="139" y="139" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="LikeThumbs50"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ps-UQ-J7f">
+                                            <rect key="frame" x="97" y="141" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="SBg-tG-RI3" secondAttribute="trailing" id="Ja9-8x-4XF"/>
@@ -148,6 +171,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LikeThumbs50" width="50" height="50"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
