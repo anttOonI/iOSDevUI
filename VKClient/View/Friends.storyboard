@@ -113,24 +113,20 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBg-tG-RI3">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVX-bc-6oh">
-                                            <rect key="frame" x="139" y="139" width="25" height="25"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="LikeThumbs50"/>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ps-UQ-J7f">
-                                            <rect key="frame" x="97" y="141" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUk-nE-TUq" customClass="LikeControl" customModule="VKClient" customModuleProvider="target">
+                                            <rect key="frame" x="83" y="137" width="80" height="25"/>
+                                            <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="GUk-nE-TUq" firstAttribute="top" secondItem="CRO-hN-IGK" secondAttribute="top" constant="137" id="1gk-YG-htY"/>
+                                        <constraint firstItem="GUk-nE-TUq" firstAttribute="leading" secondItem="CRO-hN-IGK" secondAttribute="leading" constant="83" id="ByN-1r-sET"/>
                                         <constraint firstAttribute="trailing" secondItem="SBg-tG-RI3" secondAttribute="trailing" id="Ja9-8x-4XF"/>
                                         <constraint firstAttribute="bottom" secondItem="SBg-tG-RI3" secondAttribute="bottom" id="KtY-Z7-CoM"/>
                                         <constraint firstItem="SBg-tG-RI3" firstAttribute="top" secondItem="CRO-hN-IGK" secondAttribute="top" id="kcy-Jg-i4n"/>
                                         <constraint firstItem="SBg-tG-RI3" firstAttribute="leading" secondItem="CRO-hN-IGK" secondAttribute="leading" id="nM0-XZ-qCG"/>
+                                        <constraint firstAttribute="bottom" secondItem="GUk-nE-TUq" secondAttribute="bottom" constant="8" id="p1Y-VF-3sD"/>
+                                        <constraint firstAttribute="trailing" secondItem="GUk-nE-TUq" secondAttribute="trailing" constant="7" id="tEF-ew-xlC"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
@@ -171,10 +167,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LikeThumbs50" width="50" height="50"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
