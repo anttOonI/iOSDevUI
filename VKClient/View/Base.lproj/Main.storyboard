@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NL1-dL-A2s">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NL1-dL-A2s">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oCo-sr-fb1">
@@ -107,6 +107,7 @@
                     <connections>
                         <segue destination="R38-Uo-yeR" kind="relationship" relationship="viewControllers" id="eoI-Fo-eGe"/>
                         <segue destination="a5p-Rk-LdJ" kind="relationship" relationship="viewControllers" id="1TY-jZ-y5O"/>
+                        <segue destination="ToG-4h-PD9" kind="relationship" relationship="viewControllers" id="Dwe-nT-4wO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VTG-bE-noq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -132,6 +133,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JM4-Wd-Qla" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2681" y="931"/>
+        </scene>
+        <!--News-->
+        <scene sceneID="YB5-SV-NvD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="News" id="ToG-4h-PD9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="U0L-RU-nCb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2i1-l7-NUs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2953" y="931"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Zyx-vE-igM">

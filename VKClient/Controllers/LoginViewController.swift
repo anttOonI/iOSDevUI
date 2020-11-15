@@ -85,6 +85,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         //         Do any additional setup after loading the view.
         passwordFeild.layer.cornerRadius = 5
+        passwordFeild.isSecureTextEntry = true
         loginField.layer.cornerRadius = 5
         doLoginTap.layer.cornerRadius = 5
         

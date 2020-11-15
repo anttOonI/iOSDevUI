@@ -18,12 +18,16 @@ class LikeControl: UIControl {
         super.init(frame: frame)
         self.setupButton()
         self.setupLabel()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setupButton()
         self.setupLabel()
+        self.layer.cornerRadius = self.frame.size.height / 2
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.white.cgColor
     }
     
     
@@ -33,7 +37,23 @@ class LikeControl: UIControl {
         
         likeButton.setImage(UIImage(named: "Thumbs50")?.withRenderingMode(.alwaysTemplate), for: .normal)
         likeButton.tintColor = UIColor.white
+        //        likeButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1  )
         likeButton.addTarget(self, action: #selector(tapLikeControl), for: .touchUpInside)
+        
+        likeButton.translatesAutoresizingMaskIntoConstraints = false
+        //        likeButton.frame.size = CGSize(width: 25, height: 25)
+        //        likeButton.imageView?.contentMode = .scaleToFill
+        
+        
+        NSLayoutConstraint.activate([
+            
+            likeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            likeButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            //            likeButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            likeButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            likeButton.widthAnchor.constraint(equalToConstant: 25)
+        ])
+        
         
     }
     
@@ -42,14 +62,16 @@ class LikeControl: UIControl {
         addSubview(likeCounterLabel)
         
         likeCounterLabel.textColor = .red
-        likeCounterLabel.textAlignment = .right
+        likeCounterLabel.textAlignment = .left
         likeCounterLabel.translatesAutoresizingMaskIntoConstraints = false
         
         // Настройка AutoLayout
         NSLayoutConstraint.activate([
             
-            likeCounterLabel.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor, constant: 5),
-            likeCounterLabel.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor)
+            likeCounterLabel.leadingAnchor.constraint(lessThanOrEqualTo: likeButton.trailingAnchor, constant: 5),
+            likeCounterLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            likeCounterLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5)
+            
         ])
         
         updateCountOfLikesLabel()
@@ -66,7 +88,7 @@ class LikeControl: UIControl {
             likeCounterLabel.text = "x"
         }
         
-//        likeCounterLabel.textColor = didLike ? UIColor.red : UIColor.white
+        //        likeCounterLabel.textColor = didLike ? UIColor.red : UIColor.white
     }
     
     
@@ -76,18 +98,22 @@ class LikeControl: UIControl {
         
         if didLike {
             likeButton.tintColor = UIColor.red
-            likeCounter += 1
+            likeCounter += 10000
+            self.layoutIfNeeded()
             updateCountOfLikesLabel()
         } else {
             likeButton.tintColor = UIColor.white
-            likeCounter -= 1
+            likeCounter += 10000
+            self.layoutIfNeeded()
             updateCountOfLikesLabel()
         }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        likeButton.frame = CGRect(x: 1, y: 0, width: 25, height: 25)
+        //        likeButton.frame = CGRect(x: 1, y: 0, width: 25, height: 25)
+        //        self.layer.cornerRadius = self.frame.size.height / 2
+        
     }
     
     /*

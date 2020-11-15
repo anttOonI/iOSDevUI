@@ -9,6 +9,11 @@ import UIKit
 
 class MyFriendsTableViewController: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    //Словарь чтобы был ключ - Первая буква
+    var myFriendsDict = [String: [Friend]]()
+    var sectionTitles: [String] {myFriendsDict.keys.sorted()}
+    
     var myFriends: [Friend] = [
         Friend(name: "Chendler Bing", avatar: "Chendler", imageCollection: ["Chendler", "Chendler1", "Chendler2"]),
         Friend(name: "Monica Geller", avatar: "Monica", imageCollection: ["Monica", "Monica1", "Monica2"]),
@@ -19,7 +24,7 @@ class MyFriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        myFriendsDict = Dictionary(grouping: myFriends, by: {String($0.name.prefix(1))})
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,20 +36,25 @@ class MyFriendsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return sectionTitles.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myFriends.count
+        let letterName = sectionTitles[section]
+        if let friend = myFriendsDict[letterName] {
+            return friend.count
+        }
+        
+        return 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myFriendCell", for: indexPath) as! MyFriendsTableViewCell
-        let image = myFriends[indexPath.row].avatar
-        let name = myFriends[indexPath.row].name
+        let image = myFriends[indexPath.section].avatar
+        let name = myFriends[indexPath.section].name
         
         cell.myFriendName.text = name
         // Присваивание свойству image у UIImageView картинку для аватарки и делаем ее круглой
@@ -55,18 +65,31 @@ class MyFriendsTableViewController: UITableViewController {
         cell.avatarView.layer.cornerRadius = cell.myFriendAvatar.frame.size.height / 2
         cell.avatarView.layer.shadowPath = UIBezierPath(roundedRect: cell.avatarView.bounds, cornerRadius: (cell.myFriendAvatar.frame.size.height / 2)).cgPath
         cell.avatarView.layer.shadowColor = UIColor.green.cgColor
-        cell.avatarView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        cell.avatarView.layer.shadowOpacity = 0.7
-        cell.avatarView.layer.shadowRadius = 3.0
+        cell.avatarView.layer.shadowOffset = CGSize(width: 2, height: -1)
+        cell.avatarView.layer.shadowOpacity = 0.8
+        cell.avatarView.layer.shadowRadius = 5.0
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return sectionTitles[section]
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return sectionTitles
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showCollection" else { return }
         guard let destination = segue.destination as? FriendsPhotosCollectionViewController else { return }
         if let indexPath = tableView.indexPathForSelectedRow {
-            destination.photos = myFriends[indexPath.row].imageCollection
+            if let friend = myFriendsDict[sectionTitles[indexPath.section]] {
+                destination.photos = friend[indexPath.row].imageCollection
+
+            }
         }
         
     }
