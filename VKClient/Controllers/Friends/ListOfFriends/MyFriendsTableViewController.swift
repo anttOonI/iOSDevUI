@@ -53,12 +53,19 @@ class MyFriendsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myFriendCell", for: indexPath) as! MyFriendsTableViewCell
-        let image = myFriends[indexPath.section].avatar
-        let name = myFriends[indexPath.section].name
         
-        cell.myFriendName.text = name
+        let letter = sectionTitles[indexPath.section]
+        if let friend = myFriendsDict[letter] {
+            cell.myFriendName.text = friend[indexPath.row].name
+            cell.myFriendAvatar.image = UIImage(named: friend[indexPath.row].avatar)
+        }
+        
+//        let image = myFriends[indexPath.section].avatar
+//        let name = myFriends[indexPath.section].name
+        
+//        cell.myFriendName.text = name
         // Присваивание свойству image у UIImageView картинку для аватарки и делаем ее круглой
-        cell.myFriendAvatar.image = UIImage(named: image)
+//        cell.myFriendAvatar.image = UIImage(named: image)
         cell.myFriendAvatar.layer.cornerRadius = cell.myFriendAvatar.frame.size.height / 2
         
         // Настройка UIView, который под картинкой,чтобы давал тень и был круглый
