@@ -7,12 +7,12 @@
 
 import UIKit
 
-class LikeControl: UIControl {
+class FriendsLikesControl: UIControl {
     
-    private var likeButton = UIButton()
-    private var likeCounterLabel = UILabel()
-    private var likeCounter = 0
-    private var didLike = false
+    var likeButton = UIButton()
+    var likeCounterLabel = UILabel()
+    var likeCounter = 0
+    var didLike = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,7 +31,7 @@ class LikeControl: UIControl {
     }
     
     
-    private func setupButton() {
+    func setupButton() {
         
         addSubview(likeButton)
         
@@ -57,7 +57,7 @@ class LikeControl: UIControl {
         
     }
     
-    private func setupLabel() {
+    func setupLabel() {
         
         addSubview(likeCounterLabel)
         
@@ -111,6 +111,7 @@ class LikeControl: UIControl {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        print("Вызвался layuotSubviews \(bounds)")
         //        likeButton.frame = CGRect(x: 1, y: 0, width: 25, height: 25)
         //        self.layer.cornerRadius = self.frame.size.height / 2
         
@@ -125,3 +126,4 @@ class LikeControl: UIControl {
      */
     
 }
+ 

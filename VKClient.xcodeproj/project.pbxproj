@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6030845725595A1200565FF0 /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030845625595A1200565FF0 /* LikeControl.swift */; };
+		6030845725595A1200565FF0 /* FriendsLikesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030845625595A1200565FF0 /* FriendsLikesControl.swift */; };
 		604523FB25612E0100319EDC /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604523FA25612E0100319EDC /* News.storyboard */; };
 		604523FF2561A21400319EDC /* NewsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604523FE2561A21400319EDC /* NewsDataModel.swift */; };
 		6069CDEC254F00A600722E72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6069CDEB254F00A600722E72 /* AppDelegate.swift */; };
@@ -27,10 +27,11 @@
 		60A6A2202552D89E00372BE2 /* FriendsPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A6A21F2552D89E00372BE2 /* FriendsPhotosCollectionViewCell.swift */; };
 		60B05AB52551E9EC00D7F402 /* FriendsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B05AB42551E9EC00D7F402 /* FriendsDataModel.swift */; };
 		60B05AB92551E9F500D7F402 /* GroupsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B05AB82551E9F500D7F402 /* GroupsDataModel.swift */; };
+		60FA3BE52562D6E400D33DCE /* NewsCustomControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FA3BE42562D6E400D33DCE /* NewsCustomControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6030845625595A1200565FF0 /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
+		6030845625595A1200565FF0 /* FriendsLikesControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsLikesControl.swift; sourceTree = "<group>"; };
 		604523FA25612E0100319EDC /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		604523FE2561A21400319EDC /* NewsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataModel.swift; sourceTree = "<group>"; };
 		6069CDE8254F00A600722E72 /* VKClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +53,7 @@
 		60A6A21F2552D89E00372BE2 /* FriendsPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		60B05AB42551E9EC00D7F402 /* FriendsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsDataModel.swift; sourceTree = "<group>"; };
 		60B05AB82551E9F500D7F402 /* GroupsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDataModel.swift; sourceTree = "<group>"; };
+		60FA3BE42562D6E400D33DCE /* NewsCustomControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCustomControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +70,8 @@
 		60308455255959F200565FF0 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				6030845625595A1200565FF0 /* LikeControl.swift */,
+				6030845625595A1200565FF0 /* FriendsLikesControl.swift */,
+				60FA3BE42562D6E400D33DCE /* NewsCustomControl.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -251,12 +254,13 @@
 				6069CE14254F4A5300722E72 /* AllGroupsTableViewController.swift in Sources */,
 				60A6A2202552D89E00372BE2 /* FriendsPhotosCollectionViewCell.swift in Sources */,
 				6069CE18254F4A6600722E72 /* MyGroupsTableViewController.swift in Sources */,
+				60FA3BE52562D6E400D33DCE /* NewsCustomControl.swift in Sources */,
 				60B05AB92551E9F500D7F402 /* GroupsDataModel.swift in Sources */,
 				604523FF2561A21400319EDC /* NewsDataModel.swift in Sources */,
 				6069CE20254F4D2400722E72 /* MyGroupTableViewCell.swift in Sources */,
 				60B05AB52551E9EC00D7F402 /* FriendsDataModel.swift in Sources */,
 				6069CE24254F589A00722E72 /* MyFriendsTableViewController.swift in Sources */,
-				6030845725595A1200565FF0 /* LikeControl.swift in Sources */,
+				6030845725595A1200565FF0 /* FriendsLikesControl.swift in Sources */,
 				6069CDF0254F00A600722E72 /* LoginViewController.swift in Sources */,
 				6069CDEC254F00A600722E72 /* AppDelegate.swift in Sources */,
 				6069CE28254F58A900722E72 /* MyFriendsTableViewCell.swift in Sources */,

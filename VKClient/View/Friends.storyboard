@@ -121,7 +121,7 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBg-tG-RI3">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GUk-nE-TUq" customClass="LikeControl" customModule="VKClient" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GUk-nE-TUq" customClass="FriendsLikesControl" customModule="VKClient" customModuleProvider="target">
                                             <rect key="frame" x="8" y="137" width="50" height="25"/>
                                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                                             <constraints>

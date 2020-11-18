@@ -11,34 +11,40 @@ class MyFriendsTableViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     //Словарь чтобы был ключ - Первая буква
-    var myFriendsDict = [String: [Friend]]()
-    var sectionTitles: [String] {myFriendsDict.keys.sorted()}
-    
-    var myFriends: [Friend] = [
+    private var myFriends: [Friend] = [
         Friend(name: "Chendler Bing", avatar: "Chendler", imageCollection: ["Chendler", "Chendler1", "Chendler2"]),
         Friend(name: "Monica Geller", avatar: "Monica", imageCollection: ["Monica", "Monica1", "Monica2"]),
         Friend(name: "Joey Tribbiani", avatar: "Joey", imageCollection: ["Joey", "Joey1", "Joey2", "Joey3", "Joey4"]),
-        Friend(name: "Rachell Green", avatar: "Rachell", imageCollection: ["Rachell", "Rachell1", "Rachell2"])
+        Friend(name: "Rachell Green", avatar: "Rachell", imageCollection: ["Rachell", "Rachell1", "Rachell2"]),
+        Friend(name: "Ross Geller", avatar: "ross", imageCollection: ["ross", "ross1", "ross2", "ross3"]),
+        Friend(name: "Phoebe Buffay", avatar: "phoebe", imageCollection: ["phoebe", "phoebe1", "phoebe2", "phoebe3", "phoebe4"])
     ]
-
+    private var myFriendsDict = [String: [Friend]]()
+    private var sectionTitles: [String] { myFriendsDict.keys.sorted() }
+    private var startingFriendsDict = [String: [Friend]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // инициализация словаря
         myFriendsDict = Dictionary(grouping: myFriends, by: {String($0.name.prefix(1))})
+        startingFriendsDict = myFriendsDict
+        searchBar.delegate = self
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return sectionTitles.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         let letterName = sectionTitles[section]
@@ -48,7 +54,7 @@ class MyFriendsTableViewController: UITableViewController {
         
         return 0
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -59,13 +65,6 @@ class MyFriendsTableViewController: UITableViewController {
             cell.myFriendName.text = friend[indexPath.row].name
             cell.myFriendAvatar.image = UIImage(named: friend[indexPath.row].avatar)
         }
-        
-//        let image = myFriends[indexPath.section].avatar
-//        let name = myFriends[indexPath.section].name
-        
-//        cell.myFriendName.text = name
-        // Присваивание свойству image у UIImageView картинку для аватарки и делаем ее круглой
-//        cell.myFriendAvatar.image = UIImage(named: image)
         cell.myFriendAvatar.layer.cornerRadius = cell.myFriendAvatar.frame.size.height / 2
         
         // Настройка UIView, который под картинкой,чтобы давал тень и был круглый
@@ -75,7 +74,7 @@ class MyFriendsTableViewController: UITableViewController {
         cell.avatarView.layer.shadowOffset = CGSize(width: 2, height: -1)
         cell.avatarView.layer.shadowOpacity = 0.8
         cell.avatarView.layer.shadowRadius = 5.0
-
+        
         return cell
     }
     
@@ -95,55 +94,44 @@ class MyFriendsTableViewController: UITableViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             if let friend = myFriendsDict[sectionTitles[indexPath.section]] {
                 destination.photos = friend[indexPath.row].imageCollection
-
+                
             }
         }
+    }
+}
+
+extension MyFriendsTableViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        // When user has entered text into the search box
+        // Use the filter method to iterate over all items in the data array
+        // For each item, return true if the item should be included and false if the
+        // item should NOT be included
+        
+        myFriendsDict = searchText.isEmpty ? startingFriendsDict : startingFriendsDict.mapValues({
+            $0.filter({
+                $0.name.lowercased().contains(searchText.lowercased())
+            })
+        }).filter({
+            !$0.value.isEmpty
+        })
+        tableView.reloadData()
         
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        searchBar.showsCancelButton = true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        myFriendsDict = startingFriendsDict
+        tableView.reloadData()
+        
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        
+        
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
