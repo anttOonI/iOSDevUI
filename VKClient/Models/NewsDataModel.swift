@@ -2,13 +2,13 @@
 //  NewsDataModel.swift
 //  VKClient
 //
-//  Created by AntonSobolev on 15.11.2020.
+//  Created by AntonSobolev on 18.11.2020.
 //
 
 import Foundation
 
 struct News {
-    
-    let description: String
-    let imageOfNews: String
+    let author: String
+    let newsImage: String
+    let newsText: String
 }
