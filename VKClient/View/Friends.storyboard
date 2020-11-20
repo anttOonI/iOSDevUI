@@ -12,7 +12,7 @@
         <!--Мои друзья-->
         <scene sceneID="4dp-Ct-ANb">
             <objects>
-                <tableViewController modalPresentationStyle="fullScreen" id="FMd-qj-Euz" customClass="MyFriendsTableViewController" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="FMd-qj-Euz" customClass="MyFriendsTableVC" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mcx-zZ-Kvf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -99,7 +99,7 @@
         <!--Фото-->
         <scene sceneID="6pY-68-jym">
             <objects>
-                <collectionViewController modalPresentationStyle="fullScreen" id="Wbl-t4-2k1" customClass="FriendsPhotosCollectionViewController" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController modalPresentationStyle="fullScreen" id="Wbl-t4-2k1" customClass="FriendsPhotosCollectionVC" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Uvx-ky-qgp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,21 +121,21 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBg-tG-RI3">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GUk-nE-TUq" customClass="FriendsLikesControl" customModule="VKClient" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUk-nE-TUq" customClass="FriendsLikesControl" customModule="VKClient" customModuleProvider="target">
                                             <rect key="frame" x="8" y="137" width="50" height="25"/>
                                             <color key="backgroundColor" systemColor="systemGray4Color"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="WLT-vC-oos"/>
+                                                <constraint firstAttribute="width" priority="250" constant="50" id="WLT-vC-oos"/>
                                                 <constraint firstAttribute="height" constant="25" id="q2l-PO-kZm"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GUk-nE-TUq" secondAttribute="trailing" constant="10" id="7WG-WY-iVE"/>
                                         <constraint firstAttribute="trailing" secondItem="SBg-tG-RI3" secondAttribute="trailing" id="Ja9-8x-4XF"/>
                                         <constraint firstAttribute="bottom" secondItem="SBg-tG-RI3" secondAttribute="bottom" id="KtY-Z7-CoM"/>
                                         <constraint firstAttribute="bottom" secondItem="GUk-nE-TUq" secondAttribute="bottom" constant="8" id="Saa-mk-R05"/>
                                         <constraint firstItem="GUk-nE-TUq" firstAttribute="top" secondItem="CRO-hN-IGK" secondAttribute="top" constant="137" id="WMx-dP-gGS"/>
+                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="GUk-nE-TUq" secondAttribute="trailing" constant="112" id="hbl-9p-KNW"/>
                                         <constraint firstItem="SBg-tG-RI3" firstAttribute="top" secondItem="CRO-hN-IGK" secondAttribute="top" id="kcy-Jg-i4n"/>
                                         <constraint firstItem="SBg-tG-RI3" firstAttribute="leading" secondItem="CRO-hN-IGK" secondAttribute="leading" id="nM0-XZ-qCG"/>
                                         <constraint firstItem="GUk-nE-TUq" firstAttribute="leading" secondItem="CRO-hN-IGK" secondAttribute="leading" constant="8" id="v2a-SU-tgy"/>

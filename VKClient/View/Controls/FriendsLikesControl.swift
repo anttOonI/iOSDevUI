@@ -25,9 +25,9 @@ class FriendsLikesControl: UIControl {
         super.init(coder: aDecoder)
         self.setupButton()
         self.setupLabel()
-//        self.layer.cornerRadius = self.frame.size.height / 2
-//        self.layer.borderWidth = 1
-//        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.cornerRadius = self.frame.size.height / 2
+        self.layer.borderWidth = 1
+        self.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     
@@ -36,7 +36,7 @@ class FriendsLikesControl: UIControl {
         addSubview(likeButton)
         
         likeButton.setImage(UIImage(named: "Thumbs50")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        likeButton.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.316593536)
+        likeButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         //        likeButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1  )
         likeButton.addTarget(self, action: #selector(tapLikeControl), for: .touchUpInside)
         
@@ -102,7 +102,7 @@ class FriendsLikesControl: UIControl {
             self.layoutIfNeeded()
             updateCountOfLikesLabel()
         } else {
-            likeButton.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.316593536)
+            likeButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             likeCounter += 10000
             self.layoutIfNeeded()
             updateCountOfLikesLabel()

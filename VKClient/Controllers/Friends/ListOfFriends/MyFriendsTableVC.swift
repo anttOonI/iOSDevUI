@@ -7,7 +7,9 @@
 
 import UIKit
 
-class MyFriendsTableViewController: UITableViewController {
+class MyFriendsTableVC: UITableViewController {
+
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     //Словарь чтобы был ключ - Первая буква
@@ -90,7 +92,7 @@ class MyFriendsTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showCollection" else { return }
-        guard let destination = segue.destination as? FriendsPhotosCollectionViewController else { return }
+        guard let destination = segue.destination as? FriendsPhotosCollectionVC else { return }
         if let indexPath = tableView.indexPathForSelectedRow {
             if let friend = myFriendsDict[sectionTitles[indexPath.section]] {
                 destination.photos = friend[indexPath.row].imageCollection
@@ -100,7 +102,7 @@ class MyFriendsTableViewController: UITableViewController {
     }
 }
 
-extension MyFriendsTableViewController: UISearchBarDelegate {
+extension MyFriendsTableVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // When there is no text, filteredData is the same as the original data
@@ -117,12 +119,13 @@ extension MyFriendsTableViewController: UISearchBarDelegate {
             !$0.value.isEmpty
         })
         tableView.reloadData()
-        
     }
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         
         searchBar.showsCancelButton = true
     }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         myFriendsDict = startingFriendsDict
@@ -131,7 +134,5 @@ extension MyFriendsTableViewController: UISearchBarDelegate {
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        
-        
     }
 }

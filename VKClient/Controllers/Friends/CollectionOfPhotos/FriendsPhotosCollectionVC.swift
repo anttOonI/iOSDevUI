@@ -9,7 +9,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class FriendsPhotosCollectionViewController: UICollectionViewController {
+class FriendsPhotosCollectionVC: UICollectionViewController {
     
     var photos: [String] = []
 
