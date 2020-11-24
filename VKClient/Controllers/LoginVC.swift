@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginVC: UIViewController {
     
     // MARK: - Public Properties
     

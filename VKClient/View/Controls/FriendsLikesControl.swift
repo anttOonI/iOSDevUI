@@ -101,6 +101,7 @@ class FriendsLikesControl: UIControl {
             likeCounter += 10000
             self.layoutIfNeeded()
             updateCountOfLikesLabel()
+            animateLike()
         } else {
             likeButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             likeCounter += 10000
@@ -114,6 +115,15 @@ class FriendsLikesControl: UIControl {
         print("Вызвался layuotSubviews \(bounds)")
         //        likeButton.frame = CGRect(x: 1, y: 0, width: 25, height: 25)
         //        self.layer.cornerRadius = self.frame.size.height / 2
+        
+    }
+    
+    private func animateLike() {
+        
+        UIView.animate(withDuration: 0.2,
+                       animations: {
+                        self.likeCounterLabel.frame.origin.y += 20
+                       })
         
     }
     
