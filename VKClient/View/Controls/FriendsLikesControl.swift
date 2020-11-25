@@ -11,7 +11,7 @@ class FriendsLikesControl: UIControl {
     
     var likeButton = UIButton()
     var likeCounterLabel = UILabel()
-    var likeCounter = 0
+    var likeCounter: Float = 0
     var didLike = false
     
     override init(frame: CGRect) {
@@ -27,7 +27,7 @@ class FriendsLikesControl: UIControl {
         self.setupLabel()
         self.layer.cornerRadius = self.frame.size.height / 2
         self.layer.borderWidth = 1
-        self.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
     
     
@@ -36,20 +36,15 @@ class FriendsLikesControl: UIControl {
         addSubview(likeButton)
         
         likeButton.setImage(UIImage(named: "Thumbs50")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        likeButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        //        likeButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1  )
+        likeButton.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         likeButton.addTarget(self, action: #selector(tapLikeControl), for: .touchUpInside)
         
         likeButton.translatesAutoresizingMaskIntoConstraints = false
-        //        likeButton.frame.size = CGSize(width: 25, height: 25)
-        //        likeButton.imageView?.contentMode = .scaleToFill
-        
         
         NSLayoutConstraint.activate([
             
             likeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
             likeButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            //            likeButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             likeButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
             likeButton.widthAnchor.constraint(equalToConstant: 25)
         ])
@@ -61,17 +56,17 @@ class FriendsLikesControl: UIControl {
         
         addSubview(likeCounterLabel)
         
-        likeCounterLabel.textColor = .red
+        likeCounterLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         likeCounterLabel.textAlignment = .left
         likeCounterLabel.translatesAutoresizingMaskIntoConstraints = false
         
         // Настройка AutoLayout
         NSLayoutConstraint.activate([
             
-            likeCounterLabel.leadingAnchor.constraint(lessThanOrEqualTo: likeButton.trailingAnchor, constant: 5),
+            likeCounterLabel.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor, constant: 5),
             likeCounterLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            likeCounterLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5)
-            
+            likeCounterLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+            likeCounterLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 15)
         ])
         
         updateCountOfLikesLabel()
@@ -79,16 +74,32 @@ class FriendsLikesControl: UIControl {
     
     private func updateCountOfLikesLabel() {
         
+        var tempValue: String = ""
+        
         switch likeCounter {
         case 0...999:
-            likeCounterLabel.text = String(likeCounter)
-        case 1000...1_000_000:
-            likeCounterLabel.text = String(likeCounter / 1000) + "k"
+        tempValue = String(Int(likeCounter))
+        case 1000...999_999:
+//            likeCounterLabel.text = String(likeCounter / 1000) + "k"
+            tempValue = String(likeCounter / 1000) + "k"
+        case 1_000_000...1_000_000_000:
+//            likeCounterLabel.text = String(format: "%0.1f", (likeCounter / 1_000_000)) + "M"
+            tempValue = String(format: "%0.1f", likeCounter / 1_000_000) + "M"
+
         default:
             likeCounterLabel.text = "x"
         }
         
-        //        likeCounterLabel.textColor = didLike ? UIColor.red : UIColor.white
+//        UIView.animate(withDuration: 0.2,
+//                       animations: {
+//                        self.likeCounterLabel.frame.origin.y += 20
+//                       })
+        UIView.transition(with: likeCounterLabel,
+                          duration: 0.3,
+                          options: .transitionFlipFromTop,
+                          animations: { [unowned self] in
+                              self.likeCounterLabel.text = tempValue
+                          })
     }
     
     
@@ -98,16 +109,17 @@ class FriendsLikesControl: UIControl {
         
         if didLike {
             likeButton.tintColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-            likeCounter += 10000
+            likeCounter += 1
             self.layoutIfNeeded()
             updateCountOfLikesLabel()
-            animateLike()
         } else {
-            likeButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            likeCounter += 10000
+            likeButton.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            likeCounter -= 1
             self.layoutIfNeeded()
             updateCountOfLikesLabel()
         }
+        
+
     }
     
     override func layoutSubviews() {
@@ -118,14 +130,9 @@ class FriendsLikesControl: UIControl {
         
     }
     
-    private func animateLike() {
         
-        UIView.animate(withDuration: 0.2,
-                       animations: {
-                        self.likeCounterLabel.frame.origin.y += 20
-                       })
-        
-    }
+
+
     
     /*
      // Only override draw() if you perform custom drawing.

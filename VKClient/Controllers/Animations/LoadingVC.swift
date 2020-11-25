@@ -56,7 +56,7 @@ class LoadingVC: UIViewController {
                                                         self.secondView.alpha = 1
                                                        },
                                                        completion: { _ in
-                                                        if self.countOfAnimations != 3 {
+                                                        if self.countOfAnimations != 1 {
                                                             self.countOfAnimations += 1
                                                             self.animateViews()
                                                         } else {

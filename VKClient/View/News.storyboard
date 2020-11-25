@@ -51,11 +51,11 @@
                                                     <rect key="frame" x="193" y="14" width="21" height="22"/>
                                                     <state key="normal" image="arrowshape.turn.up.forward.fill" catalog="system"/>
                                                 </button>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0if-Ua-uXx" customClass="FriendsLikesControl" customModule="VKClient" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0if-Ua-uXx" customClass="FriendsLikesControl" customModule="VKClient" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="14" width="50" height="22"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="FZs-bf-uui"/>
+                                                        <constraint firstAttribute="width" priority="250" constant="50" id="FZs-bf-uui"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -73,6 +73,7 @@
                                                 <constraint firstItem="kEL-nk-Gp2" firstAttribute="top" secondItem="2ga-cX-cFN" secondAttribute="top" constant="14" id="Y2o-GI-1mC"/>
                                                 <constraint firstItem="IW6-va-joL" firstAttribute="top" secondItem="2ga-cX-cFN" secondAttribute="top" constant="14" id="bqW-9V-yRm"/>
                                                 <constraint firstAttribute="height" constant="50" id="nkd-v5-od6"/>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="0if-Ua-uXx" secondAttribute="trailing" constant="356" id="psh-PZ-lUb"/>
                                                 <constraint firstAttribute="bottom" secondItem="0if-Ua-uXx" secondAttribute="bottom" constant="14" id="ydX-qL-fYe"/>
                                             </constraints>
                                         </view>
