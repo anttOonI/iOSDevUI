@@ -30,8 +30,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FJ0-Kh-FDA">
-                                            <rect key="frame" x="0.0" y="92" width="414" height="286"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FJ0-Kh-FDA" customClass="ScaledHeightImageView" customModule="VKClient" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="74.5" width="414" height="303.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="414" id="8XL-LM-Mjj"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="TxL-pa-CLl"/>
@@ -90,7 +90,7 @@
                                         <constraint firstAttribute="trailing" secondItem="2ga-cX-cFN" secondAttribute="trailing" id="Qcd-bv-h9F"/>
                                         <constraint firstItem="FJ0-Kh-FDA" firstAttribute="leading" secondItem="EIy-bF-gzO" secondAttribute="leading" id="RPN-wr-RVm"/>
                                         <constraint firstAttribute="trailing" secondItem="FJ0-Kh-FDA" secondAttribute="trailing" id="T2J-Br-afK"/>
-                                        <constraint firstItem="FJ0-Kh-FDA" firstAttribute="top" secondItem="ELf-bF-u4r" secondAttribute="bottom" constant="27.5" id="W5C-l9-gzd"/>
+                                        <constraint firstItem="FJ0-Kh-FDA" firstAttribute="top" secondItem="ELf-bF-u4r" secondAttribute="bottom" constant="10" id="W5C-l9-gzd"/>
                                         <constraint firstAttribute="bottom" secondItem="2ga-cX-cFN" secondAttribute="bottom" constant="1" id="YEw-2b-hD5"/>
                                         <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="bkF-9X-lPa" secondAttribute="trailing" constant="296" id="d1R-nW-FRw"/>
                                         <constraint firstItem="bkF-9X-lPa" firstAttribute="top" secondItem="EIy-bF-gzO" secondAttribute="top" constant="10" id="gW6-u2-xoW"/>
