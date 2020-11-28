@@ -120,22 +120,6 @@
             </objects>
             <point key="canvasLocation" x="857.97101449275374" y="81.696428571428569"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="XrQ-RY-8Q2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iRW-lE-t83" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BLV-x4-o0i">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h29-RD-TlX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8.6956521739130448" y="82.366071428571431"/>
-        </scene>
     </scenes>
     <resources>
         <image name="arrowshape.turn.up.forward.fill" catalog="system" width="128" height="106"/>

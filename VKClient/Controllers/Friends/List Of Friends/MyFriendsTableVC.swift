@@ -12,7 +12,6 @@ class MyFriendsTableVC: UITableViewController {
     
     
     @IBOutlet weak var searchBar: UISearchBar!
-    //Словарь чтобы был ключ - Первая буква
     private var myFriends: [Friend] = [
         Friend(name: "Chendler Bing", avatar: "Chendler", imageCollection: ["Chendler", "Chendler1", "Chendler2"]),
         Friend(name: "Monica Geller", avatar: "Monica", imageCollection: ["Monica", "Monica1", "Monica2"]),
@@ -32,23 +31,16 @@ class MyFriendsTableVC: UITableViewController {
         myFriendsDict = Dictionary(grouping: myFriends, by: {String($0.name.prefix(1))})
         startingFriendsDict = myFriendsDict
         searchBar.delegate = self
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+
     }
     
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return sectionTitles.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         let letterName = sectionTitles[section]
         if let friend = myFriendsDict[letterName] {
             return friend.count

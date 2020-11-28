@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -76,7 +77,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Мои друзья" id="Pkj-he-Vfg">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="g75-Qi-1Ti">
+                        <barButtonItem key="rightBarButtonItem" id="g75-Qi-1Ti">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="bB2-1n-xRo">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -152,10 +153,69 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Фото" id="Peb-Ep-y06"/>
+                    <connections>
+                        <segue destination="Exv-0y-2m7" kind="show" identifier="fullScreenCollection" id="dEs-Pt-ayh"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5y-ZO-Vpq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5157.971014492754" y="650.89285714285711"/>
+        </scene>
+        <!--Full Screen Friend PhotosVC-->
+        <scene sceneID="VX6-3T-47b">
+            <objects>
+                <viewController storyboardIdentifier="FullScreenFriendPhotosVC" id="Exv-0y-2m7" customClass="FullScreenFriendPhotosVC" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PaF-2w-FjD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TWa-ev-oi4">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="01S-Oy-yLn">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="FullScreenCell" reuseIdentifier="FullCollection" id="et4-yx-Osx" customClass="FullScreenCollectionViewCell" customModule="VKClient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="D0Z-Kt-HKQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IdR-T2-oNG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="IdR-T2-oNG" secondAttribute="bottom" id="4tt-gE-pLF"/>
+                                                <constraint firstAttribute="trailing" secondItem="IdR-T2-oNG" secondAttribute="trailing" id="6Se-2V-Jbk"/>
+                                                <constraint firstItem="IdR-T2-oNG" firstAttribute="leading" secondItem="D0Z-Kt-HKQ" secondAttribute="leading" id="XkU-Gt-280"/>
+                                                <constraint firstItem="IdR-T2-oNG" firstAttribute="top" secondItem="D0Z-Kt-HKQ" secondAttribute="top" id="xGW-LX-WK2"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="fullScreenImageView" destination="IdR-T2-oNG" id="FsV-CR-SCY"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="H9g-bp-VGV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pck-nw-62b"/>
+                    <connections>
+                        <outlet property="fullScreenCollectionView" destination="TWa-ev-oi4" id="JYP-wS-1ux"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K8P-vi-dKY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5992.753623188406" y="650.89285714285711"/>
         </scene>
         <!--Мои друзья-->
         <scene sceneID="Frk-VP-5QM">
