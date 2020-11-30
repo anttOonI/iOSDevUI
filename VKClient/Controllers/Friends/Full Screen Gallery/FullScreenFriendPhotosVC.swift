@@ -6,15 +6,14 @@
 //
 
 import UIKit
-
 class FullScreenFriendPhotosVC: UIViewController {
     
     var photos = [String]()
-//    var selectedItem = 0
     var indexPath: IndexPath!
-    
     let countCells = 1
-
+    
+    var items = [Int: FullScreenCollectionViewCell]()
+    
     @IBOutlet weak var fullScreenCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -26,14 +25,10 @@ class FullScreenFriendPhotosVC: UIViewController {
             self.fullScreenCollectionView.scrollToItem(at: self.indexPath, at: .centeredHorizontally, animated: false)
         })
     }
-
+    
 }
 
 extension FullScreenFriendPhotosVC: UICollectionViewDelegate, UICollectionViewDataSource {
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
@@ -43,13 +38,13 @@ extension FullScreenFriendPhotosVC: UICollectionViewDelegate, UICollectionViewDa
         
         let cell = fullScreenCollectionView.dequeueReusableCell(withReuseIdentifier: "FullCollection", for: indexPath) as! FullScreenCollectionViewCell
         cell.fullScreenImageView.image = UIImage(named: photos[indexPath.item])
-//        print("----------------\(photos[indexPath.row])---------------")
-
+        
+        self.items[indexPath.item] = cell
+            
         return cell
     }
     
     
-
 }
 extension FullScreenFriendPhotosVC: UICollectionViewDelegateFlowLayout {
     
@@ -63,43 +58,42 @@ extension FullScreenFriendPhotosVC: UICollectionViewDelegateFlowLayout {
         return CGSize(width: widthCell, height: heightCell)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        print("Will Display - \(indexPath.item)")
-//        let myreact = cell.frame
-//                cell.frame = CGRect(x: cell.frame.origin.x+320, y: cell.frame.origin.y, width: cell.frame.size.width, height: cell.frame.size.height)
-//
-//                 let value = Double(indexPath.row)*0.1
-//                 UIView.animate(withDuration: 0.5, delay:value, options: .curveEaseInOut, animations: {
-//
-//                    cell.frame = CGRect(x: myreact.origin.x+100, y: myreact.origin.y, width: myreact.size.width, height: myreact.size.height)
-//
-//                 }) { (finish) in
-//
-//                    UIView.animate(withDuration: 0.5, animations: {
-//                        cell.frame = myreact
-//                    })
-//                }
-//            }
-//    }
-//    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        print("Did end displaying - \(indexPath.item)")
-//        UIView.animate(withDuration: 0.3,
-//                       animations: {
-//                        cell.transform = .identity
-//                       } )
-//    }
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        (cell as? FullScreenCollectionViewCell)?.hideImage()
+    }
     
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        print("scrollViewWillBeginDragging - \(indexPath.item)")
-//        let cell = fullScreenCollectionView.visibleCells[indexPath.row]
-//        UIView.animate(withDuration: 0.5, animations: {
-//            cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-//        })
-//    }
-//    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-//        let cell = fullScreenCollectionView.visibleCells[indexPath.row]
-//        UIView.animate(withDuration: 0.5, animations: {
-//            cell.transform = .identity
-//        })
-//    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        var visibleRect = CGRect()
+//
+//        visibleRect.origin = fullScreenCollectionView.contentOffset
+//        visibleRect.size = fullScreenCollectionView.bounds.size
+//
+//        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+//
+//        guard let indexPath = fullScreenCollectionView.indexPathForItem(at: visiblePoint) else { return }
+//        let cell = fullScreenCollectionView.cellForItem(at: indexPath) as! FullScreenCollectionViewCell
+//        UIView.animate(withDuration: 0.5,
+//                       animations: {
+//                        cell.fullScreenImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+//                       })
+//
+//        print(indexPath)
+        updateXLocation(scrollView.contentOffset.x)
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        updateXLocation(scrollView.contentOffset.x)
+    }
+
+    func updateXLocation(_ xLocation: CGFloat) {
+        
+        let centerX = UIScreen.main.bounds.width / 2 + xLocation
+        
+        self.items.values.forEach {
+            if $0.center.x == centerX {
+                $0.showFullImage()
+            }
+        }
+    }
+    
 }

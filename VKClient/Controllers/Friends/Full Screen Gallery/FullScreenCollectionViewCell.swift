@@ -17,4 +17,13 @@ class FullScreenCollectionViewCell: UICollectionViewCell {
 //        self.fullScreenImageView.image = nil
 //        self.fullScreenImageView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
     }
+    
+    func showFullImage() {
+        self.fullScreenImageView.transform = .identity
+    }
+    
+    func hideImage() {
+        self.fullScreenImageView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+
+    }
 }
