@@ -84,6 +84,10 @@ class MyFriendsTableVC: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showCollection" else { return }
+        if segue.identifier != "showCollection" {
+            
+            return
+        }
         guard let destination = segue.destination as? FriendsPhotosCollectionVC else { return }
         if let indexPath = tableView.indexPathForSelectedRow {
             if let friend = myFriendsDict[sectionTitles[indexPath.section]] {

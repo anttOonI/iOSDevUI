@@ -220,7 +220,7 @@
         <!--Мои друзья-->
         <scene sceneID="Frk-VP-5QM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="GIt-3Z-6XK" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="GIt-3Z-6XK" customClass="CustomNavigationController" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Мои друзья" image="person.2.fill" catalog="system" id="TbU-zh-mV0"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
