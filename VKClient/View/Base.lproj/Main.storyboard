@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mBC-7F-sYk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -44,16 +43,10 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Sign In"/>
-                                        <connections>
-                                            <segue destination="ijb-xf-1r5" kind="show" identifier="Login" id="fmu-k8-7SC"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jp0-Lc-cjI">
                                         <rect key="frame" x="149.5" y="548" width="115" height="30"/>
                                         <state key="normal" title="Forgot password"/>
-                                        <connections>
-                                            <segue destination="Q1o-yZ-1VA" kind="show" identifier="ForgotPass" id="EoS-6H-8Sd"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -91,7 +84,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="646" y="292"/>
+            <point key="canvasLocation" x="23" y="-493"/>
+        </scene>
+        <!--Web LoginVC-->
+        <scene sceneID="ixY-Zc-OUj">
+            <objects>
+                <viewController storyboardIdentifier="webLoginView" modalPresentationStyle="fullScreen" id="LXa-ub-Wc5" customClass="WebLoginVC" customModule="VKClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gVh-jN-gl8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cfj-jF-K90">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vVb-ZQ-fEN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vVb-ZQ-fEN" firstAttribute="trailing" secondItem="Cfj-jF-K90" secondAttribute="trailing" id="7SC-eo-dlf"/>
+                            <constraint firstItem="vVb-ZQ-fEN" firstAttribute="bottom" secondItem="Cfj-jF-K90" secondAttribute="bottom" id="Fps-Ke-L8d"/>
+                            <constraint firstItem="Cfj-jF-K90" firstAttribute="leading" secondItem="vVb-ZQ-fEN" secondAttribute="leading" id="HTR-TT-plB"/>
+                            <constraint firstItem="Cfj-jF-K90" firstAttribute="top" secondItem="vVb-ZQ-fEN" secondAttribute="top" id="nSI-ea-BEU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Cfj-jF-K90" id="Wxl-MW-gI0"/>
+                        <segue destination="ijb-xf-1r5" kind="show" identifier="showTabBar" id="9tD-kD-QhC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O5U-EF-lLe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="743" y="292"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Db5-pX-aiG">
@@ -186,11 +214,11 @@
             <objects>
                 <viewController id="Q1o-yZ-1VA" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vHp-5r-SWM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вспоминай:)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0c-Ru-7Jv">
-                                <rect key="frame" x="144" y="391" width="126.5" height="26.5"/>
+                                <rect key="frame" x="144" y="440" width="126.5" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>

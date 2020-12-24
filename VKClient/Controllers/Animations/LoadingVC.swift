@@ -70,8 +70,8 @@ class LoadingVC: UIViewController {
     
     private func showLoginVC() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginVC: LoginVC = storyBoard.instantiateViewController(withIdentifier: "loginView") as! LoginVC
-        self.present(loginVC, animated: true, completion: nil)
+        let webLoginVC: WebLoginVC = storyBoard.instantiateViewController(withIdentifier: "webLoginView") as! WebLoginVC
+        self.present(webLoginVC, animated: true, completion: nil)
     }
     /*
      // MARK: - Navigation
