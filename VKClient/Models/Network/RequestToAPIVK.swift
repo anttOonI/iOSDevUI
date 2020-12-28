@@ -26,16 +26,22 @@ public extension Dictionary {
 class RequestToAPIVK {
     
     let baseUrl = "https://api.vk.com/method/"
-    private var parameters: Parameters = [
-        "access_token": Session.shared.token!,
-        "v": 5.126
-    ]
+    private var version = 5.126
+
         
     func getFriends() {
         
         let methodName = "friends.get"
         let url = baseUrl + methodName
         
+        let parameters: Parameters = [
+            "access_token": Session.shared.token!,
+            "v": version,
+            "count": 3,
+            "offset": "5",
+            "fields": "domain,has_mobile,photo_50"
+        ]
+
         AF.request(url, parameters: parameters).responseJSON { response in
             print("Список друзей \(response.value)")
         }
@@ -45,14 +51,14 @@ class RequestToAPIVK {
         let methodName = "photos.get"
         let url = baseUrl + methodName
         
-        var parametersApi: Parameters = [
+        let parameters: Parameters = [
+            "access_token": Session.shared.token!,
+            "v": version,
             "owner_id": Session.shared.userId!,
             "album_id": "profile"
         ]
-        
-        parametersApi.merge(dictionaries: parameters)
-        
-        AF.request(url, parameters: parametersApi).responseJSON { response in
+
+        AF.request(url, parameters: parameters).responseJSON { response in
             print("Фотографии \(response.value)")
         }
     }
@@ -62,14 +68,14 @@ class RequestToAPIVK {
         let methodName = "groups.get"
         let url = baseUrl + methodName
         
-        var parametersApi: Parameters = [
+        let parameters: Parameters = [
+            "access_token": Session.shared.token!,
+            "v": version,
             "user_id": Session.shared.userId!,
             "count": 5
         ]
         
-        parametersApi.merge(dictionaries: parameters)
-        
-        AF.request(url, parameters: parametersApi).responseJSON { response in
+        AF.request(url, parameters: parameters).responseJSON { response in
             print("Группы \(response.value)")
         }
     }
@@ -80,15 +86,15 @@ class RequestToAPIVK {
         let methodName = "groups.search"
         let url = baseUrl + methodName
         
-        var parametersApi: Parameters = [
+        var parameters: Parameters = [
+            "access_token": Session.shared.token!,
+            "v": version,
             "q": searchingGroup,
             "type": "group",
             "count": 5
         ]
         
-        parametersApi.merge(dictionaries: parameters)
-        
-        AF.request(url, parameters: parametersApi).responseJSON { response in
+        AF.request(url, parameters: parameters).responseJSON { response in
             print("По поиску \(searchingGroup) нашлось: \(response.value)")
         }
     }
