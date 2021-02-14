@@ -63,18 +63,29 @@ extension WebLoginVC: WKNavigationDelegate {
         
         print("Вот мой токен \(params["access_token"])")
         print("Вот мой айди \(params["user_id"])")
-
+        
         Session.shared.token = params["access_token"]
         Session.shared.userId = Int(params["user_id"]!)
         
         decisionHandler(.cancel)
-
-        let request = RequestToAPIVK()
         
-        request.getFriends()
-        request.getPhotos()
-        request.getGroups()
-        request.getSearchingGroups(searhingFor: "ios")
+        FriendsRequest.get(fields: [.photo_100, .city, .country] ,completion: { friends in
+            print("Друзья: \n\(friends)")
+        })
+        
+        GroupRequest.get(completion: {groups in
+            print("Группы: \n\(groups)")
+        })
+        
+        GroupRequest.search(group: "Swift", completion: { searchedGroups in
+            print("Поиск по группам: \n\(searchedGroups)")
+
+        })
+        
+        PhotoRequest.getAll(for: Session.shared.userId ?? 0, completion: { photos in
+            print("Фото: \n\(photos)")
+
+        })
         
         performSegue(withIdentifier: "showTabBar", sender: self)
     }

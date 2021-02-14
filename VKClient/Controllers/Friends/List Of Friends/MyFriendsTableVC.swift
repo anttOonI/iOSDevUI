@@ -8,30 +8,42 @@
 import UIKit
 
 class MyFriendsTableVC: UITableViewController {
-
+    
     
     
     @IBOutlet weak var searchBar: UISearchBar!
-    private var myFriends: [Friend] = [
-        Friend(name: "Chendler Bing", avatar: "Chendler", imageCollection: ["Chendler", "Chendler1", "Chendler2"]),
-        Friend(name: "Monica Geller", avatar: "Monica", imageCollection: ["Monica", "Monica1", "Monica2"]),
-        Friend(name: "Joey Tribbiani", avatar: "Joey", imageCollection: ["Joey", "Joey1", "Joey2", "Joey3", "Joey4"]),
-        Friend(name: "Rachell Green", avatar: "Rachell", imageCollection: ["Rachell", "Rachell1", "Rachell2"]),
-        Friend(name: "Ross Geller", avatar: "ross", imageCollection: ["ross", "ross1", "ross2", "ross3"]),
-        Friend(name: "Phoebe Buffay", avatar: "phoebe", imageCollection: ["phoebe", "phoebe1", "phoebe2", "phoebe3", "phoebe4"])
-    ]
+    
+    //    private var myFriends: [Friend] = [
+    //        Friend(name: "Chendler Bing", avatar: "Chendler", imageCollection: ["Chendler", "Chendler1", "Chendler2"]),
+    //        Friend(name: "Monica Geller", avatar: "Monica", imageCollection: ["Monica", "Monica1", "Monica2"]),
+    //        Friend(name: "Joey Tribbiani", avatar: "Joey", imageCollection: ["Joey", "Joey1", "Joey2", "Joey3", "Joey4"]),
+    //        Friend(name: "Rachell Green", avatar: "Rachell", imageCollection: ["Rachell", "Rachell1", "Rachell2"]),
+    //        Friend(name: "Ross Geller", avatar: "ross", imageCollection: ["ross", "ross1", "ross2", "ross3"]),
+    //        Friend(name: "Phoebe Buffay", avatar: "phoebe", imageCollection: ["phoebe", "phoebe1", "phoebe2", "phoebe3", "phoebe4"])
+    //    ]
+    private var myFriends: [Friend] = []
+    
     private var myFriendsDict = [String: [Friend]]()
     private var sectionTitles: [String] { myFriendsDict.keys.sorted() }
     private var startingFriendsDict = [String: [Friend]]()
     
+    private let downloadImage = DownloadImage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        FriendsRequest.get(completion: { [weak self] friends in
+            
+            // проинициализируем словарь где ключ - первая буква слова
+            self?.myFriendsDict = Dictionary(grouping: friends, by: { String($0.firstName.prefix(1)) })
+            self?.startingFriendsDict = self?.myFriendsDict ?? [:]
+            self?.tableView.reloadData()
+        })
         // инициализация словаря
-        myFriendsDict = Dictionary(grouping: myFriends, by: {String($0.name.prefix(1))})
+        //        myFriendsDict = Dictionary(grouping: myFriends, by: {String($0.name.prefix(1))})
         startingFriendsDict = myFriendsDict
         searchBar.delegate = self
-
+        
     }
     
     // MARK: - Table view data source
@@ -55,9 +67,24 @@ class MyFriendsTableVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myFriendCell", for: indexPath) as! MyFriendsTableViewCell
         
         let letter = sectionTitles[indexPath.section]
+        
+        /*
+         if let friend = friendDictionary[letter] {
+               imageService.getPhoto(byURL: friend[indexPath.row].avatarURL, completion: { avatar in
+                   let fullName = friend[indexPath.row].firstName + " " + friend[indexPath.row].lastName
+
+                   cell.configure(friendName: fullName, friendAvatar: avatar)
+               })
+         */
         if let friend = myFriendsDict[letter] {
-            cell.myFriendName.text = friend[indexPath.row].name
-            cell.myFriendAvatar.image = UIImage(named: friend[indexPath.row].avatar)
+//            cell.myFriendName.text = friend[indexPath.row].name
+//            cell.myFriendAvatar.image = UIImage(named: friend[indexPath.row].avatar)
+            downloadImage.getPhoto(byURL: friend[indexPath.row].avatarURL, completion: { avatar in
+                
+                let fullName = friend[indexPath.row].firstName + " " + friend[indexPath.row].lastName
+
+                cell.configure(friendName: fullName, friendAvatar: avatar)
+            })
         }
         cell.myFriendAvatar.layer.cornerRadius = cell.myFriendAvatar.frame.size.height / 2
         
@@ -83,15 +110,12 @@ class MyFriendsTableVC: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         guard segue.identifier == "showCollection" else { return }
-        if segue.identifier != "showCollection" {
-            
-            return
-        }
         guard let destination = segue.destination as? FriendsPhotosCollectionVC else { return }
         if let indexPath = tableView.indexPathForSelectedRow {
             if let friend = myFriendsDict[sectionTitles[indexPath.section]] {
-                destination.photos = friend[indexPath.row].imageCollection
+                destination.friendId = friend[indexPath.row].id
                 
             }
         }
@@ -109,7 +133,7 @@ extension MyFriendsTableVC: UISearchBarDelegate {
         
         myFriendsDict = searchText.isEmpty ? startingFriendsDict : startingFriendsDict.mapValues({
             $0.filter({
-                $0.name.lowercased().contains(searchText.lowercased())
+                $0.firstName.lowercased().contains(searchText.lowercased())
             })
         }).filter({
             !$0.value.isEmpty

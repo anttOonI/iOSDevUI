@@ -32,6 +32,12 @@ class MyFriendsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configure(friendName: String, friendAvatar: UIImage?) {
+
+            self.myFriendName.text = friendName
+            self.myFriendAvatar.image = friendAvatar
+        }
+    
     
     @objc func onTap() {
         //        UIView.animate(withDuration: 0.5, animations: { self.image.bounds = CGRect(x: 0, y: 0, width: 100, height: 100)})
