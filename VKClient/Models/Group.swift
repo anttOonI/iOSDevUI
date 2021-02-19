@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Group: Codable {
+class Group: Object, Codable {
 
-    var id: Int = 0
-    var name: String = ""
-    var avatarURL: String = ""
+    @objc dynamic var id: Int = 0
+    @objc dynamic var name: String = ""
+    @objc dynamic var avatarURL: String = ""
 
     enum CodingKeys: String, CodingKey {
         case id

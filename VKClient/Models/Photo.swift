@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Photo: Codable {
+class Photo: Object, Codable {
 
-    var id: Int = 0
-    var ownerId: Int = 0
+    @objc dynamic var id: Int = 0
+    @objc dynamic var ownerId: Int = 0
     var sizes: [Size] = []
-    var likes: Like
+    @objc dynamic var likes: Like?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -23,18 +24,18 @@ class Photo: Codable {
 
 }
 
-class Size: Codable {
+class Size: Object, Codable {
 
-    var url: String = ""
-    var width: Int = 0
-    var height: Int = 0
-    var type: String = ""
+    @objc dynamic var url: String = ""
+    @objc dynamic var width: Int = 0
+    @objc dynamic var height: Int = 0
+    @objc dynamic var type: String = ""
 }
 
-class Like: Codable {
+class Like: Object, Codable {
 
-    var isLikedByUser: Int = 0
-    var likesCount: Int = 0
+    @objc dynamic var isLikedByUser: Int = 0
+    @objc dynamic var likesCount: Int = 0
 
     enum CodingKeys: String, CodingKey {
         case isLikedByUser = "user_likes"
