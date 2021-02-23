@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MyFriendsTableVC: UITableViewController {
     
@@ -32,18 +33,29 @@ class MyFriendsTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loadData()
         FriendsRequest.get(completion: { [weak self] friends in
+            self?.loadData()
+
             
             // проинициализируем словарь где ключ - первая буква слова
             self?.myFriendsDict = Dictionary(grouping: friends, by: { String($0.firstName.prefix(1)) })
             self?.startingFriendsDict = self?.myFriendsDict ?? [:]
             self?.tableView.reloadData()
         })
-        // инициализация словаря
-        //        myFriendsDict = Dictionary(grouping: myFriends, by: {String($0.name.prefix(1))})
         startingFriendsDict = myFriendsDict
         searchBar.delegate = self
         
+    }
+    
+    func loadData() {
+        do {
+            let realm = try Realm()
+            let obj = realm.objects(Friend.self)
+            self.myFriends = Array(obj)
+        } catch {
+            print(error)
+        }
     }
     
     // MARK: - Table view data source
@@ -125,12 +137,6 @@ class MyFriendsTableVC: UITableViewController {
 extension MyFriendsTableVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
-        
         myFriendsDict = searchText.isEmpty ? startingFriendsDict : startingFriendsDict.mapValues({
             $0.filter({
                 $0.firstName.lowercased().contains(searchText.lowercased())

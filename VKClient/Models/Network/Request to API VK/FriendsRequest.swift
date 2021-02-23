@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 enum FriendFields: String {
     case nickname
@@ -67,13 +68,38 @@ class FriendsRequest {
             do {
                 let friends = try JSONDecoder().decode(Response<Friend>.self, from: data).response.items
                 DispatchQueue.main.async {
+                    saveData()
                     completion(friends)
                 }
             } catch {
                 print (error)
             }
 
+
         }.resume()
+    }
+    
+    class func saveData() {
+        FriendsRequest.get { friends in
+            do {
+                // получаем доступ к хранилищу
+                let realm = try Realm()
+                print(realm.configuration.fileURL)
+                // получим старые объекты из базы
+                let oldValues = realm.objects(Friend.self)
+                // начинаем изменять хранилище
+                realm.beginWrite()
+                // удалим старые данные
+                realm.delete(oldValues)
+                // кладем все переданные в функцию объекты в хранилище
+                realm.add(friends)
+                // завершаем изменения хранилища
+                try realm.commitWrite()
+            } catch {
+                // если произошла ошибка, выводим ее
+                print(error)
+            }
+        }
     }
 
 }

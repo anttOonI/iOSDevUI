@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class PhotoRequest {
 
@@ -36,6 +37,7 @@ class PhotoRequest {
             do {
                 let photos = try JSONDecoder().decode(Response<Photo>.self, from: data).response.items
                 DispatchQueue.main.async {
+                    saveData(userID: ownerId)
                     completion(photos)
                 }
             } catch  {
@@ -45,4 +47,26 @@ class PhotoRequest {
         }.resume()
     }
 
+    class func saveData(userID: Int?) {
+        
+        PhotoRequest.getAll(for: userID) { photos in
+            do {
+                // получаем доступ к хранилищу
+                let realm = try Realm()
+                // получим старые объекты из базы
+                let oldValues = realm.objects(Photo.self).filter("ownerId == %@", userID ?? -1)
+                // начинаем изменять хранилище
+                realm.beginWrite()
+                // удалим старые данные
+                realm.delete(oldValues)
+                // кладем все переданные в функцию объекты в хранилище
+                realm.add(photos)
+                // завершаем изменения хранилища
+                try realm.commitWrite()
+            } catch {
+                // если произошла ошибка, выводим ее
+                print(error)
+            }
+        }
+    }
 }

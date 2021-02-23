@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 enum GroupFields: String {
     case city
@@ -163,6 +164,7 @@ class GroupRequest {
                 let responseJson = json as! [String: Int]
                 let response = responseJson["response"]!
                 DispatchQueue.main.async {
+                    saveData()
                     completion(response)
                 }
             } catch {
@@ -173,8 +175,26 @@ class GroupRequest {
 
     }
 
-
-
-
-
+    class func saveData() {
+        GroupRequest.get { groups in
+            do {
+                // получаем доступ к хранилищу
+                let realm = try Realm()
+                // получим старые объекты из базы
+                let oldValues = realm.objects(Group.self)
+                // начинаем изменять хранилище
+                realm.beginWrite()
+                // удалим старые данные
+                realm.delete(oldValues)
+                // кладем все переданные в функцию объекты в хранилище
+                realm.add(groups)
+                // завершаем изменения хранилища
+                try realm.commitWrite()
+            } catch {
+                // если произошла ошибка, выводим ее
+                print(error)
+            }
+        }
+    }
+    
 }
