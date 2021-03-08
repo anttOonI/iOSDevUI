@@ -10,19 +10,9 @@ import RealmSwift
 
 class MyFriendsTableVC: UITableViewController {
     
-    
-    
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    //    private var myFriends: [Friend] = [
-    //        Friend(name: "Chendler Bing", avatar: "Chendler", imageCollection: ["Chendler", "Chendler1", "Chendler2"]),
-    //        Friend(name: "Monica Geller", avatar: "Monica", imageCollection: ["Monica", "Monica1", "Monica2"]),
-    //        Friend(name: "Joey Tribbiani", avatar: "Joey", imageCollection: ["Joey", "Joey1", "Joey2", "Joey3", "Joey4"]),
-    //        Friend(name: "Rachell Green", avatar: "Rachell", imageCollection: ["Rachell", "Rachell1", "Rachell2"]),
-    //        Friend(name: "Ross Geller", avatar: "ross", imageCollection: ["ross", "ross1", "ross2", "ross3"]),
-    //        Friend(name: "Phoebe Buffay", avatar: "phoebe", imageCollection: ["phoebe", "phoebe1", "phoebe2", "phoebe3", "phoebe4"])
-    //    ]
-    private var myFriends: [Friend] = []
+
+    private var myFriends: Results<Friend>?
     
     private var myFriendsDict = [String: [Friend]]()
     private var sectionTitles: [String] { myFriendsDict.keys.sorted() }
@@ -30,32 +20,40 @@ class MyFriendsTableVC: UITableViewController {
     
     private let downloadImage = DownloadImage()
     
+    private var token: NotificationToken?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.loadData()
-        FriendsRequest.get(completion: { [weak self] friends in
-            self?.loadData()
 
-            
-            // проинициализируем словарь где ключ - первая буква слова
-            self?.myFriendsDict = Dictionary(grouping: friends, by: { String($0.firstName.prefix(1)) })
-            self?.startingFriendsDict = self?.myFriendsDict ?? [:]
-            self?.tableView.reloadData()
-        })
+//        FriendsRequest.get(completion: { [weak self] friends in
+//            self?.loadData()
+//            self?.myFriendsDict = Dictionary(grouping: friends, by: { String($0.firstName.prefix(1)) })
+//            self?.startingFriendsDict = self?.myFriendsDict ?? [:]
+//            self?.tableView.reloadData()
+//        })
+        
+        self.realmNotifications()
+        FriendsRequest.saveData()
+        
         startingFriendsDict = myFriendsDict
         searchBar.delegate = self
         
     }
     
-    func loadData() {
-        do {
-            let realm = try Realm()
-            let obj = realm.objects(Friend.self)
-            self.myFriends = Array(obj)
-        } catch {
-            print(error)
-        }
+    private func realmNotifications() {
+        
+        guard let realm = try? Realm() else { return }
+        self.myFriends = realm.objects(Friend.self)
+        self.token = myFriends?.observe({ [weak self] (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial,.update:
+                self?.myFriendsDict = Dictionary(grouping: (self?.myFriends)!, by: { String($0.firstName.prefix(1)) })
+                self?.startingFriendsDict = self?.myFriendsDict ?? [:]
+                self?.tableView.reloadData()
+            case .error(let error):
+                fatalError("Realm error \(error)")
+            }
+        })
     }
     
     // MARK: - Table view data source

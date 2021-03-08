@@ -33,8 +33,6 @@ enum FriendFields: String {
 
 }
 
-
-
 /// Класс запросов к vk API для работы с друзьями
 class FriendsRequest {
 
@@ -68,7 +66,7 @@ class FriendsRequest {
             do {
                 let friends = try JSONDecoder().decode(Response<Friend>.self, from: data).response.items
                 DispatchQueue.main.async {
-                    saveData()
+//                    saveData()
                     completion(friends)
                 }
             } catch {

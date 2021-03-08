@@ -69,24 +69,6 @@ extension WebLoginVC: WKNavigationDelegate {
         
         decisionHandler(.cancel)
         
-        FriendsRequest.get(fields: [.photo_100, .city, .country] ,completion: { friends in
-            print("Друзья: \n\(friends)")
-        })
-        
-        GroupRequest.get(completion: {groups in
-            print("Группы: \n\(groups)")
-        })
-        
-        GroupRequest.search(group: "Swift", completion: { searchedGroups in
-            print("Поиск по группам: \n\(searchedGroups)")
-
-        })
-        
-        PhotoRequest.getAll(for: Session.shared.userId ?? 0, completion: { photos in
-            print("Фото: \n\(photos)")
-
-        })
-        
         performSegue(withIdentifier: "showTabBar", sender: self)
     }
     

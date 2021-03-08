@@ -60,6 +60,7 @@ class GroupRequest {
             do {
                 let groups = try JSONDecoder().decode(Response<Group>.self, from: data).response.items
                 DispatchQueue.main.async {
+                    saveData()
                     completion(groups)
                 }
             } catch {
@@ -164,7 +165,7 @@ class GroupRequest {
                 let responseJson = json as! [String: Int]
                 let response = responseJson["response"]!
                 DispatchQueue.main.async {
-                    saveData()
+//                    saveData()
                     completion(response)
                 }
             } catch {
@@ -180,6 +181,7 @@ class GroupRequest {
             do {
                 // получаем доступ к хранилищу
                 let realm = try Realm()
+//                print("------------- \(realm.configuration.fileURL)")
                 // получим старые объекты из базы
                 let oldValues = realm.objects(Group.self)
                 // начинаем изменять хранилище
